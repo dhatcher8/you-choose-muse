@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import Spotify from 'spotify-web-api-js';
 
 import SearchArtist from "../components/Search/SearchArtist";
+import SearchTrack from "../components/Search/SearchTrack";
+// import GenreSelect from "../components/GenreSelect/GenreSelect";
+import GenreSelect from "../components/GenreSelect/GenreSelect";
 import Header from "../components/Header/Header";
 
 export const spotifyWebApi = new Spotify();
@@ -77,10 +80,17 @@ export default class Home extends Component {
                         <SearchArtist/>
                     </div>
                     <div>
-                        <button>
-                            Generate
-                        </button>  
+                        <SearchTrack/>
                     </div>
+
+                </div>
+                <div>
+                    <GenreSelect/>
+                </div>
+                <div>
+                    <button>
+                        Generate
+                    </button>  
                 </div>
             </div>
       

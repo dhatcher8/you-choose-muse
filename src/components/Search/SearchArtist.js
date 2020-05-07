@@ -60,7 +60,7 @@ export default class SearchArtist extends Component {
         }
 
 
-        console.log(artistInfo);
+        // console.log(artistInfo);
         
     }
 
