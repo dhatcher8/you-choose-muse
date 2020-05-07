@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {spotifyWebApi} from '../pages/Home'
+import {spotifyWebApi} from '../../pages/Home'
 import './Search.css';
 
 var prev = null;

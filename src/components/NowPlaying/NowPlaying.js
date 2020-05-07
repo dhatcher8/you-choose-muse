@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 
 import Spotify from 'spotify-web-api-js';
 
-import SearchArtist from "../components/Search/SearchArtist";
-import Header from "../components/Header/Header";
-
 export const spotifyWebApi = new Spotify();
 
-export default class Home extends Component {
+// To use NowPlaying component
+// import NowPlaying from "../components/NowPlaying/NowPlaying";
+// and put <NowPlaying/> in the HTML
+
+export default class NowPlaying extends Component {
     
     constructor(){
         super();
@@ -55,36 +56,17 @@ export default class Home extends Component {
           })
     }
 
-    updatePlaylistName(event) {
-        this.setState({playlistName: event.target.value});
-    }
-
-
     render() {
-        return (
-            <div>             
-                <Header/>
-                <div className="App">
-                    <div>
-                        Playlist Name:   
-                        <input type="text"  
-                            placeholder="Playlist Name..."
-                            value={this.state.playlistName}
-                            onChange={this.updatePlaylistName.bind(this)}
-                            />
-                        </div>
-                    <div>
-                        <SearchArtist/>
-                    </div>
-                    <div>
-                        <button>
-                            Generate
-                        </button>  
-                    </div>
+        return (       
+            <div className="App">
+                <div> Now Playing: { this.state.nowPlaying.name } </div>
+                <div>
+                    <img src={ this.state.nowPlaying.image } style={{width: 200}} />
                 </div>
+                <button onClick={() => this.getNowPlaying()}>
+                    Check Now Playing
+                </button>
             </div>
-      
-            
           )
     }
 }
