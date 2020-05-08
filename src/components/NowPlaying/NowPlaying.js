@@ -59,7 +59,7 @@ export default class NowPlaying extends Component {
     render() {
         return (       
             <div className="App">
-                <div> Now Playing: { this.state.nowPlaying.name } </div>
+                <div> Now Playing: &nbsp; { this.state.nowPlaying.name } </div>
                 <div>
                     <img src={ this.state.nowPlaying.image } style={{width: 200}} />
                 </div>

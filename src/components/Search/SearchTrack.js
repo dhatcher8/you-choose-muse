@@ -126,7 +126,7 @@ export default class SearchTrack extends Component {
         return (
             <div>
                 <div>
-                Tracks:   
+                Tracks: &nbsp;
                 <input type="text" 
                     placeholder="Track Name..."
                     value={this.state.search}
@@ -134,7 +134,7 @@ export default class SearchTrack extends Component {
                     />
                 </div>
                 <div>
-                    Selected Tracks: 
+                    Selected Tracks: &nbsp;
                     {listOfTracks}
                     { this.renderMaxTracksReached() }
                 </div>

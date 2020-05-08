@@ -125,7 +125,7 @@ export default class SearchArtist extends Component {
         return (
             <div>
                 <div>
-                Artists:   
+                Artists: &nbsp;
                 <input type="text" 
                     placeholder="Artist Name..."
                     value={this.state.search}
@@ -133,7 +133,7 @@ export default class SearchArtist extends Component {
                     />
                 </div>
                 <div>
-                    Selected Artists: 
+                    Selected Artists: &nbsp;
                     {listOfArtists}
                     { this.renderMaxArtistsReached() }
                 </div>

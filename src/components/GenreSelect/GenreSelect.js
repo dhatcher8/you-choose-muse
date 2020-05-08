@@ -79,7 +79,7 @@ export default class GenreSelect extends Component {
         // console.log(this.state.genresAndValues)
         console.log(this.state.selectedGenres);
         return (
-            <div className="genre-container"> Genres:  
+            <div className="genre-container"> Genres: &nbsp; 
                 <Select options={this.state.genresAndValues}
                 className="mt-auto font-weight-bold"
                 placeholder="Search Genres"

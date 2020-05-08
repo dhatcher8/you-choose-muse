@@ -4,9 +4,11 @@ import Spotify from 'spotify-web-api-js';
 
 import SearchArtist from "../components/Search/SearchArtist";
 import SearchTrack from "../components/Search/SearchTrack";
-// import GenreSelect from "../components/GenreSelect/GenreSelect";
 import GenreSelect from "../components/GenreSelect/GenreSelect";
+import PlaylistLength from "../components/PlaylistLength/PlaylistLength";
 import Header from "../components/Header/Header";
+
+import '../App.css';
 
 export const spotifyWebApi = new Spotify();
 
@@ -68,26 +70,29 @@ export default class Home extends Component {
             <div>             
                 <Header/>
                 <div className="App">
-                    <div>
-                        Playlist Name:   
+                    <div className="general-div">
+                        Playlist Name: &nbsp;  
                         <input type="text"  
                             placeholder="Playlist Name..."
                             value={this.state.playlistName}
                             onChange={this.updatePlaylistName.bind(this)}
                             />
-                        </div>
-                    <div>
+                    </div>
+                    <div className="general-div">
+                        <PlaylistLength/>
+                    </div>
+                    <div className="general-div">
                         <SearchArtist/>
                     </div>
-                    <div>
+                    <div className="general-div">
                         <SearchTrack/>
                     </div>
 
                 </div>
-                <div>
+                <div className="general-div">
                     <GenreSelect/>
                 </div>
-                <div>
+                <div className="general-div">
                     <button>
                         Generate
                     </button>  

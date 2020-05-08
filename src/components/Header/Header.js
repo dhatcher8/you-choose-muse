@@ -23,14 +23,9 @@ export default class Header extends Component {
             <div className="nav-div">
             <nav className="navbar" className="container">
                 <div classNamke="nav-center">
-                <div className="nav-header">
                 <Link to="/home">
-                <img src={logo} alt="Spotify Builder App" />
+                <img src={logo} alt="Spotify Builder App"/>
                 </Link>
-                <button type="button" className="nav-btn">
-                    <FaAlignRight className="nav-icon"/>
-                </button>
-                </div>
                 </div>
             </nav>
             </div>
