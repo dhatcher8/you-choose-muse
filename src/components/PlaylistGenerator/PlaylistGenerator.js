@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 
 import {globalPlaylistName, spotifyWebApi} from '../../pages/Home';
 import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
@@ -9,6 +10,8 @@ import {globalGenresList} from '../GenreSelect/GenreSelect';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PlaylistGenerator.css'
+
+export var globalPlaylist = [];
 
 export default class PlaylistGenerator extends Component {    
     
@@ -27,6 +30,7 @@ export default class PlaylistGenerator extends Component {
           tooManyGenres: false,
           generatedPlaylist : {},
           playlistGenerationFailure : false,
+          redirect : null,
         }
     }
 
@@ -143,6 +147,8 @@ export default class PlaylistGenerator extends Component {
 
     goToPlaylistPage() {
         console.log(this.state.generatedPlaylist); 
+        globalPlaylist = this.state.generatedPlaylist;
+        this.setState({ redirect: "../playlist" });
     }
 
     renderPlaylistNameRequired() {
@@ -201,6 +207,9 @@ export default class PlaylistGenerator extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <Button className="btn-primary" className="playlist-button" className={

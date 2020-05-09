@@ -11,6 +11,7 @@ import Spotify from 'spotify-web-api-js';
 
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
+import Playlist from "./pages/CreatedPlaylist";
 
 const spotifyWebApi = new Spotify();
 
@@ -22,6 +23,7 @@ class App extends Component {
         <div>
           <Route exact path="/" component={Welcome}/>
           <Route exact path="/home" component={Home}/>
+          <Route exact path="/playlist" component={Playlist}/>
         </div>
       </div>
     )

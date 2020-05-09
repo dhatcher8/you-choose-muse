@@ -1,0 +1,64 @@
+.warning-container {
+    color : red;
+    padding: 30px;
+}
+
+.playlist-background {
+    background-color: #f6f6f6;
+}
+
+.playlist-container {
+	display: center;
+    flex-flow: wrap;
+    margin: auto;
+    width: 50%;
+}
+
+.playlist-items {
+    position: relative;
+    display: flex;
+    flex-flow: wrap;
+    padding-top: 11px ;
+    padding-bottom: 11px ;
+    /* top: 10px; */
+    /* bottom: 10px; */
+    border: 0px solid #898989;
+    background-color: white;
+	margin: 0px;
+    text-align: center;
+    align-items: center;
+	min-width: 70%;
+	/* text-decoration: none; */
+    box-shadow: 0px 0px 0px #898989;
+    cursor: default;
+    
+}
+
+.track-number {
+    color: black;
+    text-align: left;
+    position: relative;
+    /* top: 14px; */
+	padding: 20px ;
+}
+
+.album-cover {
+	width: 75px;
+	height: 75px;
+}
+
+.track-and-artist {
+    text-align: left;
+    position: relative;
+	padding: 16px ;
+}
+
+.track-name {
+    color: black;
+    
+}
+
+.artist-name {
+    color: black;
+    font-style: italic;
+}
