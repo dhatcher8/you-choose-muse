@@ -85,6 +85,9 @@ export default class Home extends Component {
                         <PlaylistLength/>
                     </div>
                     <div className="general-div">
+                        Combine up to 5 artists, tracks, and genres to generate a recommended playlist!
+                    </div>
+                    <div className="general-div">
                         <SearchArtist/>
                     </div>
                     <div className="general-div">

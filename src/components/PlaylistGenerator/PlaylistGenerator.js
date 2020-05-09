@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
 
-import {globalPlaylistName} from '../../pages/Home';
+import {globalPlaylistName, spotifyWebApi} from '../../pages/Home';
 import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
 import {globalArtistsList} from '../Search/SearchArtist';
 import {globalTracksList} from '../Search/SearchTrack';
@@ -25,21 +25,66 @@ export default class PlaylistGenerator extends Component {
           playlistLengthChosen: true,
           allParamsEmpty: false,
           tooManyGenres: false,
+          generatedPlaylist : {},
+          playlistGenerationFailure : false,
         }
     }
 
     onClick() {
         this.setState({buttonIsActive: true});
         this.getAllParameters();
-        this.checkForAllParameters();
+        // this.checkForAllParameters();
+        // this.generateNewPlaylist();
     }
 
     getAllParameters() {
-        console.log(globalPlaylistName);
-        console.log(globalPlaylistLength);
-        console.log(globalArtistsList)
-        console.log(globalTracksList);
-        console.log(globalGenresList);
+
+        /* Create List of Artists */
+        var tempArtists = [];
+        var i;
+        // console.log(globalArtistsList);
+        for (i = 0; i < globalArtistsList.length; i++) {
+            tempArtists.push(globalArtistsList[i].id);
+        }
+        // this.setState({ artists : tempArtists });
+        // console.log(tempArtists);
+
+        /* Create List of Tracks*/
+        var tempTracks = [];
+        var j;
+        // console.log(globalTracksList);
+        for (j = 0; j < globalTracksList.length; j++) {
+            tempTracks.push(globalTracksList[j].id);
+        }
+        // this.setState({ tracks : tempTracks });
+        // console.log(tempTracks);
+
+        /* Create List of Genres*/
+        var tempGenres = [];
+        var k;
+        // console.log(globalGenresList);
+        for (k = 0; k < globalGenresList.length; k++) {
+            tempGenres.push(globalGenresList[k].value);
+        }
+        // this.setState({ genres : tempGenres });
+        // console.log(tempGenres);
+        
+        /* Set all parameters in state at once and wait before performing next function */
+        this.setState({
+            playlistName: globalPlaylistName,
+            playlistLength: globalPlaylistLength,
+            artists : tempArtists,
+            tracks : tempTracks,
+            genres : tempGenres
+            },
+            this.checkForAllParameters
+        );
+
+        // console.log(globalPlaylistName);
+        // console.log(globalPlaylistLength);
+        // console.log(globalArtistsList)
+        // console.log(globalTracksList);
+        // console.log(globalGenresList);
     }
 
     checkForAllParameters() {
@@ -49,7 +94,7 @@ export default class PlaylistGenerator extends Component {
         } else {
             this.setState({playlistNameEmpty: false});
         }
-        if (this.state.playlistLength == -1) {
+        if (this.state.playlistLength == 0) {
             this.setState({playlistLengthChosen: false});
             return;
         } else {
@@ -61,12 +106,43 @@ export default class PlaylistGenerator extends Component {
         } else {
             this.setState({allParamsEmpty: false});
         }
-        if (this.state.genres.length > 5) {
-            this.setState({tooManyGenres: true});
+
+        var totalSeeds = this.state.genres.length + this.state.artists.length + this.state.tracks.length;
+
+        if (totalSeeds > 5) {
+            this.setState({tooManySeeds: true});
             return;
         } else {
-            this.setState({tooManyGenres: false});
+            this.setState({tooManySeeds: false});
         }
+
+        /* Call generate from a callback to make sure all values in state updated */
+        this.setState(this.generateNewPlaylist);
+
+    }
+
+    generateNewPlaylist() {
+        // console.log(this.state.artists);
+
+        spotifyWebApi.getRecommendations({
+            limit : this.state.playlistLength,
+            seed_artists : this.state.artists,
+            seed_genres : this.state.genres,
+            seed_tracks : this.state.tracks
+        }).then(
+            function(data) {
+                this.setState({ generatedPlaylist : data}, this.goToPlaylistPage);
+            }.bind(this),
+            function (err) {
+                console.error(err);
+                this.setState({ playlistGenerationFailure : true });
+            }.bind(this)
+        );
+        
+    }
+
+    goToPlaylistPage() {
+        console.log(this.state.generatedPlaylist); 
     }
 
     renderPlaylistNameRequired() {
@@ -102,11 +178,22 @@ export default class PlaylistGenerator extends Component {
         return;
     }
 
-    renderTooManyGenres() {
-        if (this.state.tooManyGenres) {
+    renderTooManySeeds() {
+        if (this.state.tooManySeeds) {
             return (
                 <div className="warning-text">
-                    You've selected too many genres!
+                    Make sure you have no more than 5 total artists, tracks, and genres selected!
+                </div>
+            );
+        }
+        return;
+    }
+
+    renderPlaylistGeneratorFailed() {
+        if (this.state.playlistGenerationFailure) {
+            return (
+                <div className="warning-text">
+                    The Generation Failed, you may have to login again to get refresh your authentication token!
                 </div>
             );
         }
@@ -125,7 +212,8 @@ export default class PlaylistGenerator extends Component {
                     { this.renderPlaylistNameRequired() }
                     { this.renderPlaylistLengthRequired() }
                     { this.renderSomeParametersRequired() }
-                    { this.renderTooManyGenres() }
+                    { this.renderTooManySeeds() }
+                    { this.renderPlaylistGeneratorFailed() }
                 </div>
             </div>
         )
