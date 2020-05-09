@@ -4,7 +4,7 @@ import {spotifyWebApi} from '../../pages/Home'
 import './Search.css';
 
 var prev = null;
-export var selectedArtists = [];
+export var globalArtistsList = [];
 
 export default class SearchArtist extends Component {
     
@@ -49,9 +49,9 @@ export default class SearchArtist extends Component {
     }
 
     artistSelected(artistInfo) {
-        if (selectedArtists.length < 5){
+        if (globalArtistsList.length < 5){
             this.setState({artistsFull: false});
-            selectedArtists.push(artistInfo);
+            globalArtistsList.push(artistInfo);
             this.render();
             return;
         }
@@ -116,8 +116,8 @@ export default class SearchArtist extends Component {
 
     render() {
         var listOfArtists = null;
-        if (selectedArtists.length != 0) {
-            listOfArtists = selectedArtists.map(function(artist, idx){
+        if (globalArtistsList.length != 0) {
+            listOfArtists = globalArtistsList.map(function(artist, idx){
                 return (<li key={idx}>{artist.name}</li>)
                 });
         }

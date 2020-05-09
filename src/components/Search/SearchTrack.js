@@ -4,7 +4,7 @@ import {spotifyWebApi} from '../../pages/Home'
 import './Search.css';
 
 var prev = null;
-export var selectedTracks = [];
+export var globalTracksList = [];
 
 export default class SearchTrack extends Component {
     
@@ -41,7 +41,7 @@ export default class SearchTrack extends Component {
             function (data) {
                 prev = null;
                 this.setState({queriedTracks: data});
-                console.log(data)
+                // console.log(data)
             }.bind(this),
             function (err) {
                 console.error(err);
@@ -50,9 +50,9 @@ export default class SearchTrack extends Component {
     }
 
     trackSelected(trackInfo) {
-        if (selectedTracks.length < 5){
+        if (globalTracksList.length < 5){
             this.setState({tracksFull: false});
-            selectedTracks.push(trackInfo);
+            globalTracksList.push(trackInfo);
             this.render();
             return;
         }
@@ -117,8 +117,8 @@ export default class SearchTrack extends Component {
 
     render() {
         var listOfTracks = null;
-        if (selectedTracks.length != 0) {
-            listOfTracks = selectedTracks.map(function(track, idx){
+        if (globalTracksList.length != 0) {
+            listOfTracks = globalTracksList.map(function(track, idx){
                 return (<li key={idx}>{track.name}</li>)
                 });
         }

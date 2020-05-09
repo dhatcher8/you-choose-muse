@@ -6,6 +6,7 @@ import './GenreSelect.css';
 import {spotifyWebApi} from '../../pages/Home'
 
 var prev = null;
+export var globalGenresList = [];
 
 export default class GenreSelect extends Component {
 
@@ -55,7 +56,12 @@ export default class GenreSelect extends Component {
     }
 
     updateSelectedGenres(updatedList) {
+        if (updatedList == null) {
+            this.setState({selectedGenres: []});
+            return;
+        }
         this.setState({selectedGenres: updatedList});
+        globalGenresList = updatedList;
         if (updatedList.length > 5) {
             this.setState({tooManyGenres: true})
         }
@@ -77,7 +83,7 @@ export default class GenreSelect extends Component {
 
     render() {
         // console.log(this.state.genresAndValues)
-        console.log(this.state.selectedGenres);
+        // console.log(this.state.selectedGenres);
         return (
             <div className="genre-container"> Genres: &nbsp; 
                 <Select options={this.state.genresAndValues}

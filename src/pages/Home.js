@@ -6,11 +6,13 @@ import SearchArtist from "../components/Search/SearchArtist";
 import SearchTrack from "../components/Search/SearchTrack";
 import GenreSelect from "../components/GenreSelect/GenreSelect";
 import PlaylistLength from "../components/PlaylistLength/PlaylistLength";
+import PlaylistGenerator from "../components/PlaylistGenerator/PlaylistGenerator";
 import Header from "../components/Header/Header";
 
 import '../App.css';
 
 export const spotifyWebApi = new Spotify();
+export var globalPlaylistName = "";
 
 export default class Home extends Component {
     
@@ -62,6 +64,7 @@ export default class Home extends Component {
 
     updatePlaylistName(event) {
         this.setState({playlistName: event.target.value});
+        globalPlaylistName = event.target.value;
     }
 
 
@@ -93,9 +96,7 @@ export default class Home extends Component {
                     <GenreSelect/>
                 </div>
                 <div className="general-div">
-                    <button>
-                        Generate
-                    </button>  
+                    <PlaylistGenerator/>
                 </div>
             </div>
       

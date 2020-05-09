@@ -5,6 +5,8 @@ import {spotifyWebApi} from '../../pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PlaylistLength.css'
 
+export var globalPlaylistLength = 0;
+
 export default class PlaylistLength extends Component {
 
     constructor() {
@@ -29,6 +31,7 @@ export default class PlaylistLength extends Component {
         }
         this.setState({ arr: tmp });
         this.setState({activeIndex: index});
+        globalPlaylistLength = this.state.arr[index].value;
         // console.log(this.state.arr);
         
     }
