@@ -19,7 +19,7 @@ export default class SearchTrack extends Component {
 
     updateAndSearch(event) {
         this.updateSearch(event);
-        this.getTracks(event);
+        this.getTracks(event.target.value);
     }
 
     updateSearch(event) {
@@ -27,16 +27,16 @@ export default class SearchTrack extends Component {
         // console.log(spotifyWebApi);
     }
     
-    getTracks(event) {
+    getTracks(queryString) {
         //query spotify api for tracks
         if (prev !== null) {
             prev.abort();
         }
-        if (event.target.value == '') {
+        if (queryString == '') {
             this.setState({queriedTracks: []});
             return;
         }
-        prev = spotifyWebApi.searchTracks(event.target.value, { limit: 8 }); // THIS LINE NEEDS FIXING
+        prev = spotifyWebApi.searchTracks(queryString, { limit: 8 }); // THIS LINE NEEDS FIXING
         prev.then(
             function (data) {
                 prev = null;
@@ -53,12 +53,12 @@ export default class SearchTrack extends Component {
         if (globalTracksList.length < 5){
             this.setState({tracksFull: false});
             globalTracksList.push(trackInfo);
-            this.render();
-            return;
         }
         else {
             this.setState({tracksFull: true});
         }
+        this.setState({ search : "" });
+        this.getTracks('')
 
 
         // console.log(trackInfo);

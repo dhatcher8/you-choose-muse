@@ -44,3 +44,9 @@
 .general-div {
   padding: 5px;
 }
+
+.written-text {
+  width: 350px;
+  margin: 0 auto 0 auto;
+  padding: 5px;
+}

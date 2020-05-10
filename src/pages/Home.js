@@ -78,13 +78,14 @@ export default class Home extends Component {
                         <input type="text"  
                             placeholder="Playlist Name..."
                             value={this.state.playlistName}
+                            maxlength="35"
                             onChange={this.updatePlaylistName.bind(this)}
                             />
                     </div>
                     <div className="general-div">
                         <PlaylistLength/>
                     </div>
-                    <div className="general-div">
+                    <div className="general-div" className="written-text">
                         Combine up to 5 artists, tracks, and genres to generate a recommended playlist!
                     </div>
                     <div className="general-div">

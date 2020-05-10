@@ -19,7 +19,7 @@ export default class SearchArtist extends Component {
 
     updateAndSearch(event) {
         this.updateSearch(event);
-        this.getAlbums(event);
+        this.getAlbums(event.target.value);
     }
 
     updateSearch(event) {
@@ -27,16 +27,16 @@ export default class SearchArtist extends Component {
         // console.log(spotifyWebApi);
     }
     
-    getAlbums(event) {
+    getAlbums(queryString) {
         //query spotify api for artists
         if (prev !== null) {
             prev.abort();
         }
-        if (event.target.value == '') {
+        if (queryString == '') {
             this.setState({queriedArtists: []});
             return;
         }
-        prev = spotifyWebApi.searchArtists(event.target.value, { limit: 8 });
+        prev = spotifyWebApi.searchArtists(queryString, { limit: 8 });
         prev.then(
             function (data) {
                 prev = null;
@@ -52,12 +52,12 @@ export default class SearchArtist extends Component {
         if (globalArtistsList.length < 5){
             this.setState({artistsFull: false});
             globalArtistsList.push(artistInfo);
-            this.render();
-            return;
         }
         else {
             this.setState({artistsFull: true});
         }
+        this.setState({ search : "" });
+        this.getAlbums('')
 
 
         // console.log(artistInfo);

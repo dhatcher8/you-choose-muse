@@ -16,7 +16,7 @@ export default class PlaylistFormatting extends Component {
                 playlistEmpty : true
             })
         }
-        console.log(globalPlaylist);
+        // console.log(globalPlaylist);
         
     }
     
