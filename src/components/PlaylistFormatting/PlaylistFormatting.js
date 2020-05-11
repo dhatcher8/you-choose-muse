@@ -29,18 +29,18 @@ export default class PlaylistFormatting extends Component {
             );
         }
         var i;
-        for (i = 0; i < globalPlaylist.tracks.length; i++) {
+        for (i = 0; i < globalPlaylist.length; i++) {
             try {
-                globalPlaylist.tracks[i].album.images[0].url = globalPlaylist.tracks[i].album.images[0].url;
+                globalPlaylist[i].album.images[0].url = globalPlaylist[i].album.images[0].url;
             }
             catch {
-                globalPlaylist.tracks[i].album.images[0].url = { url: ''};
+                globalPlaylist[i].album.images[0].url = { url: ''};
             }
         }
         return (
             <div className="playlist-background">
                 <div className="playlist-container">
-                    {globalPlaylist.tracks.map((result, index) => {
+                    {globalPlaylist.map((result, index) => {
                         return (
                             <a 
                                 key={result.id} 
