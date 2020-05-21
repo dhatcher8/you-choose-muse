@@ -225,9 +225,9 @@ export default class PlaylistGenerator extends Component {
     }
 
     getSizesOfSubPlaylists() {
-        console.log((this.state.genres.length));
-        console.log((this.state.totalparams));
-        console.log((this.state.genres.length / this.state.totalparams));
+        // console.log((this.state.genres.length));
+        // console.log((this.state.totalparams));
+        // console.log((this.state.genres.length / this.state.totalparams));
         var a,t,g;
         if (this.state.artists.length == 0) {
             a = 0;

@@ -9,7 +9,7 @@ export default class Welcome extends Component {
     render() {
         return (
           <div className="App">
-            <a href='http://localhost:8888'>
+            <a href='http://localhost:8888/login'>
               <button>Login with Spotify</button>
             </a>
           </div>
