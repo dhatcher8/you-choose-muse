@@ -3,7 +3,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import './GenreSelect.css';
 
-import {spotifyWebApi} from '../../pages/Home'
+import {spotifyWebApi} from '../../pages/GetTokenRedirect'
 
 var prev = null;
 export var globalGenresList = [];

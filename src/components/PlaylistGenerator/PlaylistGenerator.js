@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
-import {globalPlaylistName, spotifyWebApi} from '../../pages/Home';
+import {globalPlaylistName} from '../../pages/Home';
+import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
 import {globalArtistsList} from '../Search/SearchArtist';
 import {globalTracksList} from '../Search/SearchTrack';
@@ -36,6 +37,7 @@ export default class PlaylistGenerator extends Component {
           tp: "stop",
           gp: "stop",
         }
+        console.log(spotifyWebApi.getAccessToken());
     }
 
     onClick() {

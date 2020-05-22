@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 import './PlaylistHeader.css';
 
-import {spotifyWebApi} from '../../pages/Home';
+import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 import {globalPlaylist} from '../PlaylistGenerator/PlaylistGenerator';
 import {globalPlaylistName} from '../../pages/Home';
 import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
@@ -12,6 +12,7 @@ import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
 export default class PlaylistHeader extends Component {
     
     constructor() {
+        console.log(spotifyWebApi.getAccessToken());
         super();
         this.state = {
             playlistEmpty: false,

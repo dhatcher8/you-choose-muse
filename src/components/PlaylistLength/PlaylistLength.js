@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import {spotifyWebApi} from '../../pages/Home';
+import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PlaylistLength.css'

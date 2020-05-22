@@ -21,6 +21,7 @@ export default class PlaylistFormatting extends Component {
     }
     
     render() {
+        
         if (this.state.playlistEmpty) {
             return (
                 <div className="warning-container">
