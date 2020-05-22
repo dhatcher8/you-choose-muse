@@ -31,8 +31,16 @@ export default class Home extends Component {
         globalPlaylistName = event.target.value;
     }
 
-    goToPlaylistPage() {
+    goToRecentlyPlayed() {
       this.setState({ redirect: "../recently-played" });
+    }
+
+    goToTopTracks() {
+      this.setState({ redirect: "../top-tracks"});
+    }
+
+    goToTopArtists() {
+      this.setState({ redirect: "../top-artists"});
     }
 
     render() {
@@ -44,7 +52,12 @@ export default class Home extends Component {
                 <Header/>
                 <div className="App">
                     <div className="general-div">
-                        <button onClick={() => this.goToPlaylistPage()}> See Recently Played</button>
+                        <button onClick={() => this.goToRecentlyPlayed()}> See Recently Played</button>
+                        <button onClick={() => this.goToTopTracks()}> See Your Top Tracks</button>
+                        <button onClick={() => this.goToTopArtists()}> See Your Top Artists</button>
+                    </div>
+                    <div className="general-div">
+                        
                     </div>
                     <div className="general-div">
                         Playlist Name: &nbsp;  

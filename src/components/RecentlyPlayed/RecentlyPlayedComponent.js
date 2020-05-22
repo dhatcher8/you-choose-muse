@@ -16,7 +16,7 @@ export default class RecentlyPlayedComponent extends Component {
     }
     
     getTrackPlaylist() {
-        console.log(spotifyWebApi.getAccessToken());
+        // console.log(spotifyWebApi.getAccessToken());
         spotifyWebApi.getMyRecentlyPlayedTracks({
             limit : 50
         }).then(
