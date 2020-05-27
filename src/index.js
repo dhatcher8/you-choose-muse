@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './fonts/tcm_regular.TTF';
+import './fonts/tcm_bold.TTF';
+import './fonts/tcm_italic.TTF';
 
 import {
   BrowserRouter as Router

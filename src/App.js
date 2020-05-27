@@ -11,6 +11,7 @@ import Spotify from 'spotify-web-api-js';
 
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
+import LearnMore from "./pages/LearnMore";
 import RecentlyPlayed from "./pages/RecentlyPlayed";
 import TopTracks from "./pages/TopTracks";
 import TopArtists from "./pages/TopArtists";
@@ -26,6 +27,7 @@ class App extends Component {
       <div className="App">
         <div>
           <Route exact path="/" component={Welcome}/>
+          <Route exact path="/learn-more" component={LearnMore}/>
           <Route exact path="/token" component={GetTokenRedirect}/>
           <Route exact path="/home" component={Home}/>
           <Route exact path="/recently-played" component={RecentlyPlayed}/>

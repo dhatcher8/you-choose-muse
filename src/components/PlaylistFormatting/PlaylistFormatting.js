@@ -35,7 +35,12 @@ export default class PlaylistFormatting extends Component {
                 globalPlaylist[i].album.images[0].url = globalPlaylist[i].album.images[0].url;
             }
             catch {
-                globalPlaylist[i].album.images[0].url = { url: ''};
+                if (globalPlaylist[i].name == "") {
+                    globalPlaylist.splice(i, 1);
+                } else {
+                    console.log(i);
+                    globalPlaylist[i].album.images[0].url = { url: ''};
+                }
             }
         }
         return (
