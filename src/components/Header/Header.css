@@ -1,5 +1,5 @@
 /* Navbar */
-.navbar {
+/* .navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -7,9 +7,9 @@
     padding: 0.75rem 2rem;
     background: white;
     z-index: 1;
-  }
+  } */
 
-  .nav-div {
+  /* .nav-div {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -18,8 +18,8 @@
     font-size: calc(10px + 2vmin);
     padding: 10px;
     color: black;
-  }
-
+  } */
+/* 
   .nav-header {
     display: flex;
     justify-content: space-between;
@@ -53,12 +53,12 @@
   }
   .nav-links a:hover {
     color: var(--primaryColor);
-  }
+  } */
   
-  .show-nav {
+  /* .show-nav {
     height: 100px;
-  }
-  @media screen and (min-width: 768px) {
+  } */
+  /* @media screen and (min-width: 768px) {
     .nav-btn {
       display: none;
     }
@@ -76,5 +76,5 @@
       margin: 0 1rem;
       padding: 0.5rem 0;
     }
-  }
+  } */
   /* end of navbar */

@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import logoBig from '../images/logo-big.png'
 import logoWithTextBig from '../images/logo-with-text-big.png'
 
-import Spotify from 'spotify-web-api-js';
+// import Spotify from 'spotify-web-api-js';
 
-const spotifyWebApi = new Spotify();
+// const spotifyWebApi = new Spotify();
 
 export default class Welcome extends Component {
     
+
     render() {
         return (
           <div className="background-div-navy">

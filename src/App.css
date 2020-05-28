@@ -184,6 +184,57 @@
   width: auto;
 }
 
+
+/* NavBar */
+
+.header-div-full-length {
+  background-color: #142850;
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0px;
+}
+
+.nav-div {
+  width: 85%;
+  display: inline-block;
+}
+
+.nav-ul {
+  background-color: #142850;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+  list-style-type: none;
+  padding-top: 27px;
+  padding-bottom: 22px;
+  margin: 0px;
+}
+
+.nav-links {
+  display: inline-block;
+  
+}
+
+.nav-a {
+  margin-left: 35px;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.nav-a:hover {
+  margin-left: 35px;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  color: #3fc1c9;
+  text-decoration: none;
+}
+
+
 /* Beginner Stuff That I Was Using Previously */
 
 .App {

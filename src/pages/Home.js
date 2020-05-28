@@ -19,6 +19,7 @@ export default class Home extends Component {
     
     constructor(){
         super();
+        console.log(spotifyWebApi);
         this.state = {
           playlistName: '',
           redirect : null,
