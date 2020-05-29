@@ -52,14 +52,14 @@ export default class Home extends Component {
             <div>             
                 <Header/>
                 <div className="App">
-                    <div className="general-div">
+                    {/* <div className="general-div">
                         <button onClick={() => this.goToRecentlyPlayed()}> See Recently Played</button>
                         <button onClick={() => this.goToTopTracks()}> See Your Top Tracks</button>
                         <button onClick={() => this.goToTopArtists()}> See Your Top Artists</button>
                     </div>
                     <div className="general-div">
                         
-                    </div>
+                    </div> */}
                     <div className="general-div">
                         Playlist Name: &nbsp;  
                         <input type="text"  

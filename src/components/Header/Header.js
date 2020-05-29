@@ -51,7 +51,7 @@ export default class Header extends Component {
 
             <div className="header-div-full-length">
                 <div className="nav-div">
-                    <a href='/home'>
+                    <a href="#" onClick={() => this.goToBuildPlaylist()}>
                         <img className="logo-small image-align-left" src={logoBig} alt="Logo"/>
                     </a>
                     <ul className="nav-ul">

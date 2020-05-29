@@ -21,11 +21,13 @@ export default class PlaylistFormatting extends Component {
     }
     
     render() {
-        
-        if (this.state.playlistEmpty) {
+        // console.log(globalPlaylist.length == 0);
+        if (globalPlaylist.length == 0) {
             return (
-                <div className="warning-container">
-                    An error has occured, the playlist disappeared.
+                <div className="warning-logout-container">
+                    <div className="warning-sub-container">
+                        Uh oh, You've been logged out! Go back to the home screen and login!
+                    </div>
                 </div>
             );
         }
@@ -44,23 +46,23 @@ export default class PlaylistFormatting extends Component {
             }
         }
         return (
-            <div className="playlist-background">
-                <div className="playlist-container">
+            <div className="playlist-items-background-div">
+                <div className="playlist-list-container-div">
                     {globalPlaylist.map((result, index) => {
                         return (
                             <a 
                                 key={result.id} 
                                 href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
-                                className="playlist-items"
+                                className="playlist-individual-items"
                                 // onClick={this.artistSelected.bind(this,result)}
                             >
-                                <h6 className="track-number">{index+1}</h6>
+                                <h6 className="playlist-item-number">{index+1}</h6>
                                 {/* </a><div className="image-wrapper"> */}
-                                <img className="album-cover" src={result.album.images[0].url} alt={result.album.name}/> 
+                                <img className="playlist-item-image" src={result.album.images[0].url} alt={result.album.name}/> 
                                 {/* </div>  */}
-                                <div className="track-and-artist">
-                                    <h6 className="track-name">{result.name}</h6>
-                                    <h6 className="artist-name">{result.artists[0].name}</h6>
+                                <div className="playlist-item-text">
+                                    <div className="playlist-item-text-one">{result.name}</div>
+                                    <div className="playlist-item-text-two">{result.artists[0].name}</div>
                                 </div>
                                 
                             </a>

@@ -1,15 +1,32 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 
-import logoWithTextBig from '../images/logo-with-text-big.png'
+import logoWithTextBig from '../../images/logo-with-text-big.png'
 
-export default class LearnMore extends Component {
+export default class AboutUsComponent extends Component {
     
+    constructor() {
+        super();
+        this.state = {
+          redirect: null,
+        }
+    }
+
+    goToBuildPlaylist() {
+        this.setState({ redirect: "../home"});
+    }
+
+
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
+
         return (
           <div className="background-div-offwhite">
             <div className="rounded-container-navy">
                 <div>
-                    <a href='/'>
+                    <a href='#' onClick={() => this.goToBuildPlaylist()}>
                         <img className="logo-with-text-information-page margins-in-rounded-div" src={logoWithTextBig} alt="Logo"/>
                     </a>
                 </div>
@@ -40,8 +57,14 @@ export default class LearnMore extends Component {
                 <div className="basic-body-text-offwhite margins-in-rounded-div">
                     You Choose, Muse requires your Spotify login in order to show you your play history, cater recommendations to you, and save playlists to your profile. But no need to worry, your data is never permanently stored through our app!
                 </div>
+                <div className="basic-title-text margins-in-rounded-div-titles text-color-offwhite">
+                    Logged Into the Wrong Account?
+                </div>
+                <div className="basic-body-text-offwhite margins-in-rounded-div">
+                    Just go to <a href="https://accounts.spotify.com/" className="text-teal">accounts.spotify.com</a> and log out. Then go back to You Choose, Muse's main page and login again! 
+                </div>
                 <div className="button-margins-in-rounded-div">
-                    <a href='/'>
+                    <a href='#' onClick={() => this.goToBuildPlaylist()}>
                         <button className="button-big button-teal">Sounds Great!</button>
                     </a>
                 </div>

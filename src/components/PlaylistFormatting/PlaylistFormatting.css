@@ -14,7 +14,6 @@
     width: 65%;
     background-color: black;
     padding-bottom: 22px ;
-    
 }
 
 .playlist-items {
@@ -34,7 +33,7 @@
 	/* text-decoration: none; */
     box-shadow: 0px 0px 0px #898989;
     cursor: default;
-    
+ 
 }
 
 .track-number {

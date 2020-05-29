@@ -17,6 +17,7 @@ import TopTracks from "./pages/TopTracks";
 import TopArtists from "./pages/TopArtists";
 import Playlist from "./pages/CreatedPlaylist";
 import GetTokenRedirect from "./pages/GetTokenRedirect";
+import AboutUs from "./pages/AboutUs";
 
 const spotifyWebApi = new Spotify();
 
@@ -34,6 +35,7 @@ class App extends Component {
           <Route exact path="/top-tracks" component={TopTracks}/>
           <Route exact path="/top-artists" component={TopArtists}/>
           <Route exact path="/playlist" component={Playlist}/>
+          <Route exact path="/about-us" component={AboutUs}/>
         </div>
       </div>
     )
