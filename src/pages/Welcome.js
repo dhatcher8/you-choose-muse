@@ -24,7 +24,7 @@ export default class Welcome extends Component {
               <div className="centered-big-logo-div">
                 <img className="logo-with-text-large" src={logoWithTextBig} alt="Logo"/>
               </div>
-              <div className="login-title-text text-color-offwhite">
+              <div className="title-text text-color-offwhite">
                 Build a playlist <span class="text-color-teal">inspired</span> by your <span class="text-color-pink">desires</span>.
               </div>
               <div className="medium-padding-div">

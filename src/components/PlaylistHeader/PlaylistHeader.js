@@ -25,6 +25,7 @@ export default class PlaylistHeader extends Component {
                 playlistEmpty : true
             })
         }
+        console.log(globalPlaylist);
         
     }
 
@@ -49,7 +50,7 @@ export default class PlaylistHeader extends Component {
         // console.log(this.state.userID)
         spotifyWebApi.createPlaylist(this.state.userID, {
             "name": globalPlaylistName,
-            "description": "Recommendation Playlist Made By Drew Hatcher's App",
+            "description": "Recommendation Playlist Made By You Choose, Muse",
             "public": true
         }).then(
             function(data) {
@@ -98,15 +99,6 @@ export default class PlaylistHeader extends Component {
             }.bind(this)
         );
 
-        // spotifyWebApi.addTracksToPlaylist(this.state.userID, this.state.newPlaylistData.id, undefined, undefined, {uris : trackURIs}).then(
-        //     function(data) {
-        //         console.log(data);
-        //         this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
-        //     }.bind(this),
-        //     function (err) {
-        //         console.error(err);
-        //     }.bind(this)
-        // );
     }
     
     render() {
@@ -117,7 +109,7 @@ export default class PlaylistHeader extends Component {
         return (
             <div className="playlist-header-background-div-with-save">
                 <div className="playlist-header-div">
-                    <h3 className="login-title-text text-color-teal">{globalPlaylistName}</h3>
+                    <h3 className="title-text text-color-teal">{globalPlaylistName}</h3>
                     <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
                     {this.state.buttonText}
                     </button> 

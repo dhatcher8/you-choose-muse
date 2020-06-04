@@ -18,12 +18,17 @@ export default class TopArtistsComponent extends Component {
             // allTimeActive : true,
             // sixMonthsActive : false,
             // thisMonthActive : false,
+            // arr: [
+            //     { name: "Top All Time", isActive: false, value: 0 },
+            //     { name: "Top Six Months", isActive: false, value: 1 },
+            //     { name: "Top This Month", isActive: true, value: 2 }
+            // ],
+            // activeIndex : 2
             arr: [
-                { name: "Top All Time", isActive: false, value: 0 },
-                { name: "Top Six Months", isActive: false, value: 1 },
-                { name: "Top This Month", isActive: true, value: 2 }
+                {isActive: false},
+                {isActive: false},
+                {isActive: true}
             ],
-            activeIndex : 2
         }
         this.getArtistsAllTime();
         this.getArtistsSixMonths();
@@ -102,6 +107,30 @@ export default class TopArtistsComponent extends Component {
         
     }
     
+    selectTopAllTime() {
+        let tmp = this.state.arr;
+        tmp[0].isActive = true;
+        tmp[1].isActive = false;
+        tmp[2].isActive = false;
+        this.setState({ arr: tmp });
+    }
+
+    selectTopSixMonths() {
+        let tmp = this.state.arr;
+        tmp[0].isActive = false;
+        tmp[1].isActive = true;
+        tmp[2].isActive = false;
+        this.setState({ arr: tmp });
+    }
+    
+    selectTopThisMonth() {
+        let tmp = this.state.arr;
+        tmp[0].isActive = false;
+        tmp[1].isActive = false;
+        tmp[2].isActive = true;
+        this.setState({ arr: tmp });
+    }
+
     renderAllTime() {
         if (this.state.arr[0].isActive) {
             var i;
@@ -115,22 +144,22 @@ export default class TopArtistsComponent extends Component {
             }
             return (
                 <div>
-                    <div className="playlist-background">
-                        <div className="playlist-container">
+                    <div className="playlist-items-background-div">
+                        <div className="playlist-list-container-div">
                             {topAllTime.map((result, index) => {
                                 return (
                                     <a 
                                         key={result.id} 
                                         href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
-                                        className="playlist-items"
+                                        className="playlist-individual-items"
                                         // onClick={this.artistSelected.bind(this,result)}
                                     >
-                                        <h6 className="track-number">{index+1}</h6>
+                                        <h6 className="playlist-item-number">{index+1}</h6>
                                         {/* </a><div className="image-wrapper"> */}
-                                        <img className="album-cover" src={result.images[0].url} alt={result.name}/> 
+                                        <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
                                         {/* </div>  */}
-                                        <div className="track-and-artist">
-                                            <h6 className="track-name">{result.name}</h6>
+                                        <div className="playlist-item-text">
+                                            <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
                                         
                                     </a>
@@ -159,22 +188,22 @@ export default class TopArtistsComponent extends Component {
             }
             return (
                 <div>
-                    <div className="playlist-background">
-                        <div className="playlist-container">
+                    <div className="playlist-items-background-div">
+                        <div className="playlist-list-container-div">
                             {topSixMonths.map((result, index) => {
                                 return (
                                     <a 
                                         key={result.id} 
                                         href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
-                                        className="playlist-items"
+                                        className="playlist-individual-items"
                                         // onClick={this.artistSelected.bind(this,result)}
                                     >
-                                        <h6 className="track-number">{index+1}</h6>
+                                        <h6 className="playlist-item-number">{index+1}</h6>
                                         {/* </a><div className="image-wrapper"> */}
-                                        <img className="album-cover" src={result.images[0].url} alt={result.name}/> 
+                                        <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
                                         {/* </div>  */}
-                                        <div className="track-and-artist">
-                                            <h6 className="track-name">{result.name}</h6>
+                                        <div className="playlist-item-text">
+                                            <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
                                         
                                     </a>
@@ -203,22 +232,22 @@ export default class TopArtistsComponent extends Component {
             }
             return (
                 <div>
-                    <div className="playlist-background">
-                        <div className="playlist-container">
+                    <div className="playlist-items-background-div">
+                        <div className="playlist-list-container-div">
                             {topThisMonth.map((result, index) => {
                                 return (
                                     <a 
                                         key={result.id} 
                                         href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
-                                        className="playlist-items"
+                                        className="playlist-individual-items"
                                         // onClick={this.artistSelected.bind(this,result)}
                                     >
-                                        <h6 className="track-number">{index+1}</h6>
+                                        <h6 className="playlist-item-number">{index+1}</h6>
                                         {/* </a><div className="image-wrapper"> */}
-                                        <img className="album-cover" src={result.images[0].url} alt={result.name}/> 
+                                        <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
                                         {/* </div>  */}
-                                        <div className="track-and-artist">
-                                            <h6 className="track-name">{result.name}</h6>
+                                        <div className="playlist-item-text">
+                                            <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
                                         
                                     </a>
@@ -239,15 +268,16 @@ export default class TopArtistsComponent extends Component {
             // console.log("here1");
             if (this.state.playlistGenerationFailure) {
                 return (
-                    <div className="warning-container">
-                        An error has occured, the playlist disappeared.
+                    <div className="warning-logout-container">
+                        <div className="warning-sub-container">
+                            Uh oh, you've been logged out! Go back to the home screen and login!
+                        </div>
                     </div>
                 );
             }
             else {
                 return(
-                    <div>
-
+                    <div className="background-div-navy">
                     </div>
                 );
             }
@@ -260,15 +290,15 @@ export default class TopArtistsComponent extends Component {
 
         return (
             <div>
-                <div className="playlist-background">
-                    <div className="playlist-header-container">
-                        <h3 className="playlist-title-text">Top Played Artists</h3>
+                <div className="playlist-header-background-div">
+                    <div className="playlist-header-div">
+                        <h3 className="title-text-with-select text-color-teal">Top Played Artists</h3>
                         {/* <Button className="btn-primary" className="playlist-button-position" className="playlist-button" className={
                             this.state.buttonIsActive ? 'playlist-btn-active' : 'playlist-btn-inactive'} onClick={() => this.onClick()}
                             >
                         {this.state.buttonText}
                         </Button>   */}
-                        {this.state.arr.map((el, index) =>
+                        {/* {this.state.arr.map((el, index) =>
                             <>
                                 <Button className="btn-primary" className="playlist-button" className={
                                 el.isActive ? 'playlist-btn-active' : 'playlist-btn-inactive'
@@ -279,7 +309,15 @@ export default class TopArtistsComponent extends Component {
                                 </Button>
                                 <>&nbsp;</>
                             </>
-                        )}
+                        )} */}
+
+                        <ul className="top-select-ul">
+                            <li className="top-select-links"><a className={this.state.arr[2].isActive ? 'top-select-a-selected' : 'top-select-a'} href="#" onClick={() => this.selectTopThisMonth()}>Past Month</a></li>
+                            <li className="top-select-links"><a className={this.state.arr[1].isActive ? 'top-select-a-selected' : 'top-select-a'} href="#" onClick={() => this.selectTopSixMonths()}>Past Six Months</a></li>
+                            <li className="top-select-links"><a className={this.state.arr[0].isActive ? 'top-select-a-selected' : 'top-select-a'} href="#" onClick={() => this.selectTopAllTime()}>All Time</a></li>
+
+                        </ul>
+
                     </div>
                 </div>
                 <div>

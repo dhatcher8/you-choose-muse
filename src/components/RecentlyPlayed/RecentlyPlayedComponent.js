@@ -10,6 +10,9 @@ export default class RecentlyPlayedComponent extends Component {
         this.state = {
             playlistGenerationFailure : false,
             recentlyPlayedList : null,
+            buttonIsActive: false,
+            buttonText: "Save.",
+            userID: "",
         }
         this.getTrackPlaylist();
 
@@ -24,7 +27,7 @@ export default class RecentlyPlayedComponent extends Component {
                 // newTrackPlaylist = data;
                 // this.recentlyPlayedList = data;
                 this.setState({ recentlyPlayedList : data.items})
-                console.log(data);
+                console.log(data.items);
                 // console.log(this.recentlyPlayedList.items);
             }.bind(this),
             function (err) {
@@ -38,6 +41,66 @@ export default class RecentlyPlayedComponent extends Component {
         // console.log(recentlyPlayedList);
         // this.render();
     }
+
+    onClick() {
+        this.setState({ buttonIsActive: true });
+        this.setState({ buttonText : "Playlist Saved!"}, this.getUserID);
+    }
+
+    getUserID() {
+        spotifyWebApi.getMe().then(
+            function(data) {
+                // console.log(data);
+                this.setState({ userID : data.id}, this.createPlaylist);
+            }.bind(this),
+            function (err) {
+                console.error(err);
+            }.bind(this)
+        );
+    }
+
+    createPlaylist() {
+
+        var today = new Date();
+        var date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        var playlistName = 'Recently Played Tracks - ' + date;
+
+        spotifyWebApi.createPlaylist(this.state.userID, {
+            "name": playlistName,
+            "description": "Recently Played Tracks Playlist Made By You Choose, Muse",
+            "public": true
+        }).then(
+            function(data) {
+                this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
+            }.bind(this),
+            function (err) {
+                console.error(err);
+            }.bind(this)
+        );
+    }
+
+    addSongsToPlaylist() {
+        // console.log(globalPlaylist);
+        // console.log(this.state.newPlaylistData);
+        var trackURIs1 = [];
+        var i;
+        for (i = 0; i < 50; i++) {
+            trackURIs1.push(this.state.recentlyPlayedList[i].track.uri);
+        }
+
+        // console.log(trackURIs1, trackURIs2);
+
+        spotifyWebApi.addTracksToPlaylist(this.state.userID, this.state.newPlaylistData.id, trackURIs1).then(
+            function(data) {
+                // console.log(data);
+                this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
+            }.bind(this),
+            function (err) {
+                console.error(err);
+            }.bind(this)
+        );
+
+    }
     
     render() {
         if (this.state.recentlyPlayedList == null) {
@@ -45,7 +108,7 @@ export default class RecentlyPlayedComponent extends Component {
                 return (
                     <div className="warning-logout-container">
                         <div className="warning-sub-container">
-                            Uh oh, You've been logged out! Go back to the home screen and login!
+                            Uh oh, you've been logged out! Go back to the home screen and login!
                         </div>
                     </div>
                 );
@@ -53,7 +116,6 @@ export default class RecentlyPlayedComponent extends Component {
             else {
                 return(
                     <div className="background-div-navy">
-
                     </div>
                 );
             }
@@ -73,9 +135,12 @@ export default class RecentlyPlayedComponent extends Component {
         }
         return (
             <div>
-                <div className="playlist-header-background-div">
+                <div className="playlist-header-background-div-with-save">
                     <div className="playlist-header-div">
-                        <h3 className="login-title-text text-color-teal">Recently Played Tracks</h3>
+                        <h3 className="title-text text-color-teal">Recently Played Tracks</h3>
+                        <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
+                        {this.state.buttonText}
+                        </button> 
                         {/* <Button className="btn-primary" className="playlist-button-position" className="playlist-button" className={
                             this.state.buttonIsActive ? 'playlist-btn-active' : 'playlist-btn-inactive'} onClick={() => this.onClick()}
                             >
