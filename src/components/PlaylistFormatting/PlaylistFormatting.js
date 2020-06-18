@@ -32,6 +32,7 @@ export default class PlaylistFormatting extends Component {
             );
         }
         var i;
+        // console.log(globalPlaylist);
         for (i = 0; i < globalPlaylist.length; i++) {
             try {
                 globalPlaylist[i].album.images[0].url = globalPlaylist[i].album.images[0].url;
@@ -40,8 +41,12 @@ export default class PlaylistFormatting extends Component {
                 if (globalPlaylist[i].name == "") {
                     globalPlaylist.splice(i, 1);
                 } else {
-                    console.log(i);
-                    globalPlaylist[i].album.images[0].url = { url: ''};
+                    if (globalPlaylist[i].album.images.length < 1 || globalPlaylist[i].album.images == undefined) {
+                        console.log("true");
+                        globalPlaylist[i].album.images[0] = { url: ''};
+                    } else {
+                        globalPlaylist[i].album.images[0].url = { url: ''};
+                    }  
                 }
             }
         }

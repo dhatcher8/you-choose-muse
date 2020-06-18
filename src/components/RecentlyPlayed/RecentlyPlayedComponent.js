@@ -125,14 +125,26 @@ export default class RecentlyPlayedComponent extends Component {
             // console.log(rpl);
         }
         var i;
+        console.log(rpl);
         for (i = 0; i < rpl.length; i++) {
             try {
                 rpl[i].track.album.images[0].url = rpl[i].track.album.images[0].url;
             }
             catch {
-                rpl[i].track.album.images[0].url = { url: ''};
+                
+                if (rpl[i].track.name == "") {
+                    rpl.splice(i, 1);
+                } else {
+                    if (rpl[i].track.album.images.length < 1 || rpl[i].track.album.images == undefined) {
+                        console.log("true");
+                        rpl[i].track.album.images[0] = { url: ''};
+                    } else {
+                        rpl[i].track.album.images[0].url = { url: ''};
+                    }  
+                }
             }
         }
+
         return (
             <div>
                 <div className="playlist-header-background-div-with-save">

@@ -232,12 +232,20 @@ export default class TopTracksComponent extends Component {
                     topAllTime[i].album.images[0].url = topAllTime[i].album.images[0].url;
                 }
                 catch {
-                    // console.log(topAllTime);
-                    // console.log(topAllTime[i]);
-                    // console.log(i);
-                    topAllTime[i].album.images[0].url = { url: ''};
+                    console.log(i);
+                    if (topAllTime[i].name == "") {
+                        topAllTime.splice(i, 1);
+                    } else {
+                        if (topAllTime[i].album.images.length < 1 || topAllTime[i].album.images == undefined) {
+                            console.log("true");
+                            topAllTime[i].album.images[0] = { url: ''};
+                        } else {
+                            topAllTime[i].album.images[0].url = { url: ''};
+                        }  
+                    }
                 }
             }
+            
             return (
                 <div>
                     <div className="playlist-items-background-div">
@@ -280,9 +288,20 @@ export default class TopTracksComponent extends Component {
                     topSixMonths[i].album.images[0].url = topSixMonths[i].album.images[0].url;
                 }
                 catch {
-                    topSixMonths[i].album.images[0].url = { url: ''};
+                    if (topSixMonths[i].name == "") {
+                        topSixMonths.splice(i, 1);
+                    } else {
+                        if (topSixMonths[i].album.images.length < 1 || topSixMonths[i].album.images == undefined) {
+                            console.log("true");
+                            topSixMonths[i].album.images[0] = { url: ''};
+                        } else {
+                            topSixMonths[i].album.images[0].url = { url: ''};
+                        }  
+                    }
                 }
             }
+
+
             return (
                 <div>
                     <div className="playlist-items-background-div">
@@ -325,9 +344,20 @@ export default class TopTracksComponent extends Component {
                     topThisMonth[i].album.images[0].url = topThisMonth[i].album.images[0].url;
                 }
                 catch {
-                    topThisMonth[i].album.images[0].url = { url: ''};
+                    if (topThisMonth[i].name == "") {
+                        topThisMonth.splice(i, 1);
+                    } else {
+                        if (topThisMonth[i].album.images.length < 1 || topThisMonth[i].album.images == undefined) {
+                            console.log("true");
+                            topThisMonth[i].album.images[0] = { url: ''};
+                        } else {
+                            topThisMonth[i].album.images[0].url = { url: ''};
+                        }  
+                    }
+                    
                 }
             }
+
             return (
                 <div>
                     <div className="playlist-items-background-div">

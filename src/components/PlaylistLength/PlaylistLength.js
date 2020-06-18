@@ -42,16 +42,17 @@ export default class PlaylistLength extends Component {
         
         return (
             <div>
-                Playlist Length: &nbsp;
+                <div className="sub-title-text-home">Playlist Length: &nbsp;</div>
+                
                 {this.state.arr.map((el, index) =>
                     <>
-                        <Button className="btn-primary" className="playlist-button" className={
-                        el.isActive ? 'playlist-btn-active' : 'playlist-btn-inactive'
+                        <button className={
+                        el.isActive ? 'playlist-length-button-selected' : 'playlist-length-button'
                         } key={index} onClick={() => this.onClick(index)}>
                             <div key={index} onClick={() => this.onClick(index)}>
                             {el.value}
                             </div>
-                        </Button>
+                        </button>
                         <>&nbsp;</>
                     </>
                 )}

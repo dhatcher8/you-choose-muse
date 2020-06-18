@@ -139,7 +139,17 @@ export default class TopArtistsComponent extends Component {
                     topAllTime[i].images[0].url = topAllTime[i].images[0].url;
                 }
                 catch {
-                    topAllTime[i].images[0].url = { url: ''};
+                    console.log(i);
+                    if (topAllTime[i].name == "") {
+                        topAllTime.splice(i, 1);
+                    } else {
+                        if (topAllTime[i].images.length < 1 || topAllTime[i].images == undefined) {
+                            console.log("true");
+                            topAllTime[i].images[0] = { url: ''};
+                        } else {
+                            topAllTime[i].images[0].url = { url: ''};
+                        }
+                    }
                 }
             }
             return (
@@ -183,7 +193,17 @@ export default class TopArtistsComponent extends Component {
                     topSixMonths[i].images[0].url = topSixMonths[i].images[0].url;
                 }
                 catch {
-                    topSixMonths[i].images[0].url = { url: ''};
+                    console.log(i);
+                    if (topSixMonths[i].name == "") {
+                        topSixMonths.splice(i, 1);
+                    } else {
+                        if (topSixMonths[i].images.length < 1 || topSixMonths[i].images == undefined) {
+                            console.log("true");
+                            topSixMonths[i].images[0] = { url: ''};
+                        } else {
+                            topSixMonths[i].images[0].url = { url: ''};
+                        }
+                    }
                 }
             }
             return (
@@ -222,14 +242,27 @@ export default class TopArtistsComponent extends Component {
     renderThisMonth() {
         if (this.state.arr[2].isActive) {
             var i;
+            console.log(topThisMonth);
             for (i = 0; i < topThisMonth.length; i++) {
                 try {
                     topThisMonth[i].images[0].url = topThisMonth[i].images[0].url;
                 }
                 catch {
-                    topThisMonth[i].images[0].url = { url: ''};
+                    console.log(i);
+                    if (topThisMonth[i].name == "") {
+                        topThisMonth.splice(i, 1);
+                    } else {
+                        if (topThisMonth[i].images.length < 1 || topThisMonth[i].images == undefined) {
+                            console.log("true");
+                            topThisMonth[i].images[0] = { url: ''};
+                        } else {
+                            topThisMonth[i].images[0].url = { url: ''};
+                        }
+                    }
                 }
             }
+
+
             return (
                 <div>
                     <div className="playlist-items-background-div">

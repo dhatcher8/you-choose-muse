@@ -126,15 +126,16 @@ export default class SearchTrack extends Component {
         return (
             <div>
                 <div>
-                Tracks: &nbsp;
+                <div className="sub-title-text-home"> Tracks: &nbsp;</div>
                 <input type="text" 
                     placeholder="Track Name..."
+                    className="text-input"
                     value={this.state.search}
                     onChange={this.updateAndSearch.bind(this)}
                     />
                 </div>
                 <div>
-                    Selected Tracks: &nbsp;
+                    <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
                     {listOfTracks}
                     { this.renderMaxTracksReached() }
                 </div>

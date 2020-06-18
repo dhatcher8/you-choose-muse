@@ -431,6 +431,64 @@
   padding-bottom: 15px;
 }
 
+/* Playlist Builder Page Stuff */
+
+.text-input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-style: none;
+  /* box-sizing: border-box; */
+  border-radius: 10px;
+  background-color: #3fc1c9;
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+}
+
+.text-input::placeholder {
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-style: italic;
+  font-size: 18px;
+}
+
+.playlist-length-button {
+  padding: 12px 20px;
+  margin-top: 8px;
+  margin-right: 10px;
+  border-style: none;
+  /* box-sizing: border-box; */
+  border-radius: 10px;
+  background-color: #3fc1c9;
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+}
+
+.playlist-length-button:hover {
+  background-color: #ff5c87;
+}
+
+.playlist-length-button-selected {
+  padding: 12px 20px;
+  margin: 8px;
+  border-style: none;
+  /* box-sizing: border-box; */
+  border-radius: 10px;
+  background-color: #ff5c87;
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+}
+
+.sub-title-text-home {
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  width: 350px;
+  margin: 0 auto 0 auto;
+  padding: 5px;
+}
 
 /* Beginner Stuff That I Was Using Previously */
 

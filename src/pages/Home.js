@@ -51,7 +51,7 @@ export default class Home extends Component {
         return (
             <div>             
                 <Header/>
-                <div className="App">
+                <div className="background-div-navy">
                     {/* <div className="general-div">
                         <button onClick={() => this.goToRecentlyPlayed()}> See Recently Played</button>
                         <button onClick={() => this.goToTopTracks()}> See Your Top Tracks</button>
@@ -60,19 +60,21 @@ export default class Home extends Component {
                     <div className="general-div">
                         
                     </div> */}
-                    <div className="general-div">
+                    <h3 className="title-text-with-select text-color-pink">Build Your Playlist!</h3>
+                    <div className="general-div sub-title-text-home">
                         Playlist Name: &nbsp;  
                         <input type="text"  
                             placeholder="Playlist Name..."
                             value={this.state.playlistName}
                             maxlength="35"
+                            className="text-input"
                             onChange={this.updatePlaylistName.bind(this)}
                             />
                     </div>
                     <div className="general-div">
                         <PlaylistLength/>
                     </div>
-                    <div className="general-div" className="written-text">
+                    <div className="general-div sub-title-text-home" >
                         Combine up to 5 artists, tracks, and genres to generate a recommended playlist!
                     </div>
                     <div className="general-div">
@@ -81,14 +83,14 @@ export default class Home extends Component {
                     <div className="general-div">
                         <SearchTrack/>
                     </div>
-
-                </div>
-                <div className="general-div">
+                    <div className="general-div">
                     <GenreSelect/>
+                    </div>
+                    <div className="general-div">
+                        <PlaylistGenerator/>
+                    </div>
                 </div>
-                <div className="general-div">
-                    <PlaylistGenerator/>
-                </div>
+
             </div>
       
             

@@ -125,15 +125,17 @@ export default class SearchArtist extends Component {
         return (
             <div>
                 <div>
-                Artists: &nbsp;
+                    <div className="sub-title-text-home"> Artists: &nbsp;</div>
+               
                 <input type="text" 
                     placeholder="Artist Name..."
+                    className="text-input"
                     value={this.state.search}
                     onChange={this.updateAndSearch.bind(this)}
                     />
                 </div>
                 <div>
-                    Selected Artists: &nbsp;
+                    <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
                     {listOfArtists}
                     { this.renderMaxArtistsReached() }
                 </div>
