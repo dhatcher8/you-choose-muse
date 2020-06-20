@@ -75,6 +75,11 @@ export default class SearchArtist extends Component {
         return;
     }
 
+    removeSelectedArtist(index) {
+        globalArtistsList.splice(index, 1);
+        this.setState(this.render);
+    }
+
     renderSearchResults() {
         if (this.state.queriedArtists.length == 0 || this.state.queriedArtists.artists.items.length == 0) {
             return;
@@ -116,29 +121,46 @@ export default class SearchArtist extends Component {
 
     render() {
         var listOfArtists = null;
+        var outer_this = this;
         if (globalArtistsList.length != 0) {
             listOfArtists = globalArtistsList.map(function(artist, idx){
-                return (<li key={idx}>{artist.name}</li>)
+                // onClick(idx) {
+                //     globalArtistsList.splice(idx, 1);
+                // }
+                return (
+                <button className="selected-li-item" onClick={() => outer_this.removeSelectedArtist(idx)} key={idx}>{artist.name} &nbsp; <span class="text-color-pink text-bold text-twentytwo">X</span></button>
+                )
                 });
-        }
+        } 
 
         return (
             <div>
-                <div>
-                    <div className="sub-title-text-home"> Artists: &nbsp;</div>
-               
-                <input type="text" 
-                    placeholder="Artist Name..."
-                    className="text-input"
-                    value={this.state.search}
-                    onChange={this.updateAndSearch.bind(this)}
-                    />
+                <div className="general-builder-element-div">
+                    <div className="builder-elements-right-align">
+                        <h3 className="sub-title-text-home"> Artists: &nbsp;</h3>
+                    </div>
+                    <div className="builder-elements-left-align">
+                        <input type="text" 
+                            placeholder="Artist Name..."
+                            className="text-input"
+                            value={this.state.search}
+                            onChange={this.updateAndSearch.bind(this)}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
-                    {listOfArtists}
-                    { this.renderMaxArtistsReached() }
+
+                <div className="selected-builder-element-div">
+                    <div className="builder-elements-right-align">
+                        <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
+                    </div>
+                    <div className="builder-elements-left-align">
+                        {listOfArtists}
+                    </div>
+
+                    
                 </div>
+                <div style={{clear:'both'}}></div>
+                { this.renderMaxArtistsReached() }
                 <div>
                     <div className="container">
                         {/*Result*/}

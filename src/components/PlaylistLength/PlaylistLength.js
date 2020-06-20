@@ -41,21 +41,24 @@ export default class PlaylistLength extends Component {
     render() {
         
         return (
-            <div>
-                <div className="sub-title-text-home">Playlist Length: &nbsp;</div>
-                
-                {this.state.arr.map((el, index) =>
-                    <>
-                        <button className={
-                        el.isActive ? 'playlist-length-button-selected' : 'playlist-length-button'
-                        } key={index} onClick={() => this.onClick(index)}>
-                            <div key={index} onClick={() => this.onClick(index)}>
-                            {el.value}
-                            </div>
-                        </button>
-                        <>&nbsp;</>
-                    </>
-                )}
+            <div className="general-builder-element-div">
+                <div className="builder-elements-right-align">
+                    <h3 className="sub-title-text-home">Playlist Length: &nbsp;</h3>
+                </div>
+                <div className="builder-elements-left-align">
+                    {this.state.arr.map((el, index) =>
+                        <>
+                            <button className={
+                            el.isActive ? 'playlist-length-button-selected' : 'playlist-length-button'
+                            } key={index} onClick={() => this.onClick(index)}>
+                                <div key={index} onClick={() => this.onClick(index)}>
+                                {el.value}
+                                </div>
+                            </button>
+                            <>&nbsp;</>
+                        </>
+                    )}
+                </div>
             </div>
         )
     }

@@ -129,6 +129,10 @@
   font-size: 25px;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .text-teal, .text-teal:hover {
   /* text-decoration: none; */
   color: #3fc1c9;
@@ -433,10 +437,32 @@
 
 /* Playlist Builder Page Stuff */
 
+.general-builder-element-div {
+  height: 70px;
+}
+
+.selected-builder-element-div {
+  min-height: 70px;
+  display: flex;
+  /* overflow: hidden; */
+  /* height: max-content; */
+}
+
+.builder-lone-text {
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  /* width: 350px; */
+  margin: 0 auto 0 auto;
+  padding: 11px;
+  height: 50px;
+}
+
 .text-input {
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 7px 20px;
+  margin: 10px 0;
   border-style: none;
+  width: 300px;
   /* box-sizing: border-box; */
   border-radius: 10px;
   background-color: #3fc1c9;
@@ -452,9 +478,45 @@
   font-size: 18px;
 }
 
+.builder-elements-right-align {
+  align-items: right;
+  text-align: right;
+  align-content: right;
+  width: 43%;
+  height: 64px;
+  float: left;
+  padding-right: 10px
+}
+
+.builder-elements-left-align {
+  align-items: left;
+  text-align: left;
+  align-content: left;
+  width: 57%;
+  height: 63px;
+  float: right;
+  padding-left: 10px;
+  display: table;
+}
+
 .playlist-length-button {
-  padding: 12px 20px;
-  margin-top: 8px;
+  padding: 7px 21px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-style: none;
+  /* box-sizing: border-box; */
+  border-radius: 10px;
+  background-color: #3fc1c9;
+  color: #f5f5f5;
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+}
+
+.selected-li-item {
+  padding: 7px 21px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-right: 10px;
   border-style: none;
   /* box-sizing: border-box; */
@@ -470,8 +532,10 @@
 }
 
 .playlist-length-button-selected {
-  padding: 12px 20px;
-  margin: 8px;
+  padding: 7px 21px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
   border-style: none;
   /* box-sizing: border-box; */
   border-radius: 10px;
@@ -485,9 +549,9 @@
   color: #f5f5f5;
   font-family: "Tw Cen MT";
   font-size: 18px;
-  width: 350px;
+  /* width: 350px; */
   margin: 0 auto 0 auto;
-  padding: 5px;
+  padding-top: 19px;
 }
 
 /* Beginner Stuff That I Was Using Previously */

@@ -61,34 +61,29 @@ export default class Home extends Component {
                         
                     </div> */}
                     <h3 className="title-text-with-select text-color-pink">Build Your Playlist!</h3>
-                    <div className="general-div sub-title-text-home">
-                        Playlist Name: &nbsp;  
-                        <input type="text"  
+                    <div className="general-builder-element-div">
+                        <div className="builder-elements-right-align">
+                            <h3 className="sub-title-text-home">Playlist Name: &nbsp; </h3>
+                        </div>
+                        <div className="builder-elements-left-align">
+                            <input type="text"  
                             placeholder="Playlist Name..."
                             value={this.state.playlistName}
                             maxlength="35"
                             className="text-input"
                             onChange={this.updatePlaylistName.bind(this)}
                             />
+                        </div>
                     </div>
-                    <div className="general-div">
-                        <PlaylistLength/>
+                    <PlaylistLength/>
+                    <div className="builder-lone-text text-bold" >
+                        Choose up to 5 artists, tracks, and genres!
                     </div>
-                    <div className="general-div sub-title-text-home" >
-                        Combine up to 5 artists, tracks, and genres to generate a recommended playlist!
-                    </div>
-                    <div className="general-div">
-                        <SearchArtist/>
-                    </div>
-                    <div className="general-div">
-                        <SearchTrack/>
-                    </div>
-                    <div className="general-div">
+                    <SearchArtist/>
+                    <SearchTrack/>
                     <GenreSelect/>
-                    </div>
-                    <div className="general-div">
-                        <PlaylistGenerator/>
-                    </div>
+                    <PlaylistGenerator/>
+
                 </div>
 
             </div>
