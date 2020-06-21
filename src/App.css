@@ -563,6 +563,63 @@
   padding-top: 19px;
 }
 
+/* Search Results */
+.search-results-container {
+	display: inline-block;
+    flex-flow: wrap;
+    margin: auto;
+	width: 51%;
+	background-color: #f5f5f5;
+	border-radius: 40px;
+	height: auto;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+
+.search-result-items {
+	position: relative;
+	padding: 16px ;
+	align-items: center;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+}
+.search-image-username {
+	color: #f5f5f5;
+	font-family: "Tw Cen MT";
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: auto;
+	line-height: 1.2em;
+}
+.search-image {
+	width: 180px;
+	height: 180px;
+	border-radius: 20px;
+}
+.search-image-wrapper {
+	align-items: center;
+	box-sizing: border-box;
+	width: 180px;
+	height: 180px;
+	border-radius: 20px;
+	justify-content: center;
+	background-color: #142850;
+}
+ 
+.search-image-wrapper img {
+   mix-blend-mode: screen;
+   filter: grayscale(100%) contrast(140%);
+   opacity: .6;
+ }
+
 /* Beginner Stuff That I Was Using Previously */
 
 .App {

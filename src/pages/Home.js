@@ -48,7 +48,6 @@ export default class Home extends Component {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         } 
-        console.log(spotifyWebApi.getAccessToken());
         if (spotifyWebApi.getAccessToken() == null) {
             return (
                 <div>

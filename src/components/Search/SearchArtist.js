@@ -99,19 +99,20 @@ export default class SearchArtist extends Component {
                 }
             }
             return (
-                <div className="results-container">
+                <div className="search-results-container">
                     {artists.map((result) => {
                         return (
                             <a 
                                 key={result.id} 
                                 href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
-                                className="result-items"
+                                className="search-result-items"
                                 onClick={this.artistSelected.bind(this,result)}
                             >
-                                <h6 className="image-username">{result.name}</h6>
-                                <div className="image-wrapper">
-                                    <img className="image" src={result.images[0].url} alt={result.user}/> 
+                                
+                                <div className="search-image-wrapper">
+                                    <img className="search-image" src={result.images[0].url} alt={result.user}/> 
                                 </div> 
+                                <div className="search-image-username">{result.name}</div>
                             </a>
     					);
                     })}
@@ -159,12 +160,7 @@ export default class SearchArtist extends Component {
                 </div>
                 <div style={{clear:'both'}}></div>
                 { this.renderMaxArtistsReached() }
-                <div>
-                    <div className="container">
-                        {/*Result*/}
-                        { this.renderSearchResults() }
-                    </div>
-                </div>
+                { this.renderSearchResults() }
             </div>
         )
     }

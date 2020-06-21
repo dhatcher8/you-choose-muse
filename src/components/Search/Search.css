@@ -1,59 +1,75 @@
-/* Results */
-.results-container {
-	display: flex;
+/* Search Results */
+/* .search-results-container {
+	display: inline-block;
     flex-flow: wrap;
     margin: auto;
-	width: 100%;
+	width: 51%;
+	background-color: #f5f5f5;
+	border-radius: 40px;
+	height: auto;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
 }
-.result-items {
+
+.search-result-items {
 	position: relative;
 	padding: 16px ;
-	border: 1px solid #898989;
-	margin: 16px auto;
+	align-items: center;
 	text-align: center;
-	min-width: 200px;
 	text-decoration: none;
-    box-shadow: 2px 2px 2px #898989;
 	cursor: pointer;
-	
-    
+	display: inline-block;
 }
-.image-username {
-	color: white;
-	font-size: 18px;
+.search-image-username {
+	color: #f5f5f5;
+	font-family: "Tw Cen MT";
+	font-size: 20px;
+	font-weight: bold;
 	position: absolute;
-	bottom: 0;
-    left: 0;
-    display: inline-block;
-	margin: 0;
-	background: rgba(0, 0, 0, 0.6);
-	padding: 5px 10px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: auto;
+	line-height: 1.2em;
 }
-.image {
-	width: 200px;
-	height: 200px;
+.search-image {
+	width: 180px;
+	height: 180px;
+	border-radius: 20px;
 }
-.image-wrapper {
+.search-image-wrapper {
 	align-items: center;
 	box-sizing: border-box;
-	height: 100%;
+	width: 180px;
+	height: 180px;
+	border-radius: 20px;
 	justify-content: center;
+	background-color: #142850;
 }
+ 
+.search-image-wrapper img {
+   mix-blend-mode: screen;
+   filter: grayscale(100%) contrast(140%);
+   opacity: .6;
+ } */
+ 
 /*Loader*/
-.search-loading {
+/* .search-loading {
 	position: absolute;
 	left: 0;
 	right: 0;
 	margin: auto;
-}
+} */
 /*Random Text*/
-.warning-text {
+/* .warning-text {
     color: red;
-}
+} */
 /*Show and hide*/
-.show {
+/* .show {
 	display: inline-block;
 }
 .hide {
 	display: none;
-}
+} */

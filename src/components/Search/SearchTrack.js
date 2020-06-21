@@ -100,19 +100,19 @@ export default class SearchTrack extends Component {
                 }
             }
             return (
-                <div className="results-container">
+                <div className="search-results-container">
                     {tracks.map((result) => {
                         return (
                             <a 
                                 key={result.id} 
                                 href={null} //later this href can add track also can later fill in the alt under image source as a common image or something
-                                className="result-items"
+                                className="search-result-items"
                                 onClick={this.trackSelected.bind(this,result)}
                             >
-                                <h6 className="image-username">{result.name + " by " + result.artists[0].name}</h6>
-                                <div className="image-wrapper">
-                                    <img className="image" src={result.album.images[0].url} alt={result.user}/> 
+                                <div className="search-image-wrapper">
+                                    <img className="search-image" src={result.album.images[0].url} alt={result.user}/> 
                                 </div> 
+                                <h6 className="search-image-username">{result.name + " by " + result.artists[0].name}</h6>
                             </a>
     					);
                     })}
