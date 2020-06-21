@@ -26,7 +26,7 @@ export default class PlaylistFormatting extends Component {
             return (
                 <div className="warning-logout-container">
                     <div className="warning-sub-container">
-                        Uh oh, You've been logged out! Go back to the home screen and login!
+                        Uh oh, you've been logged out! Go back to the home screen and login!
                     </div>
                 </div>
             );

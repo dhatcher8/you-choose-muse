@@ -251,15 +251,24 @@
 .warning-logout-container {
   background-color: #142850;
   min-height: 100vh;
+  padding: 60px;
+}
+.warning-sub-container {
   font-family: "Tw Cen MT";
   font-size: 20px;
   font-weight: bold;
   color : #ff5c87;
-  padding: 60px;
-}
-.warning-sub-container {
   display: inline-block;
   width: 70%
+}
+
+.warning-small-container {
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  color : #ff5c87;
+  display: inline-block;
+  width: 70%;
+  padding: 10px;
 }
 
 .playlist-header-background-div {

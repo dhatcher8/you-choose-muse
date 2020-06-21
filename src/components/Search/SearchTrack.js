@@ -68,12 +68,18 @@ export default class SearchTrack extends Component {
     renderMaxTracksReached() {
         if (this.state.tracksFull) {
             return (
-                <div className="warning-text">
+                <div className="warning-small-container">
                     You can only submit up to 5 tracks.
                 </div>
             );
         }
         return;
+    }
+
+    removeSelectedTrack(index) {
+        globalTracksList.splice(index, 1);
+        this.setState({tracksFull: false},
+            this.render);
     }
 
     renderSearchResults() { // THIS WHOLE FUNCTION NEEDS FIXING
@@ -116,10 +122,20 @@ export default class SearchTrack extends Component {
     }
 
     render() {
-        var listOfTracks = null;
+        // var listOfTracks = null;
         if (globalTracksList.length != 0) {
             listOfTracks = globalTracksList.map(function(track, idx){
                 return (<li key={idx}>{track.name}</li>)
+                });
+        }
+
+        var listOfTracks = null;
+        var outer_this = this;
+        if (globalTracksList.length != 0) {
+            listOfTracks = globalTracksList.map(function(track, idx){
+                return (
+                <button className="selected-li-item" onClick={() => outer_this.removeSelectedTrack(idx)} key={idx}>{track.name} &nbsp; <span class="text-color-pink text-bold text-twentytwo">X</span></button>
+                )
                 });
         }
 
@@ -138,13 +154,27 @@ export default class SearchTrack extends Component {
                         />
                     </div>
                 </div>
-                <div className="general-builder-element-div">
+                {/* <div className="general-builder-element-div">
                     <div className="builder-elements-right-align">
                         <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
                         {listOfTracks}
                         { this.renderMaxTracksReached() }
                     </div>
+                </div> */}
+
+
+                <div className="selected-builder-element-div">
+                    <div className="builder-elements-right-align">
+                        <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
+                    </div>
+                    <div className="builder-elements-left-align">
+                        {listOfTracks}
+                    </div>   
                 </div>
+                <div style={{clear:'both'}}></div>
+                { this.renderMaxTracksReached() }
+
+
                 <div>
                     <div className="container">
                         {/*Result*/}

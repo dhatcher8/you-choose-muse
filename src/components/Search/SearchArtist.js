@@ -67,7 +67,7 @@ export default class SearchArtist extends Component {
     renderMaxArtistsReached() {
         if (this.state.artistsFull) {
             return (
-                <div className="warning-text">
+                <div className="warning-small-container">
                     You can only submit up to 5 artists.
                 </div>
             );
@@ -77,7 +77,8 @@ export default class SearchArtist extends Component {
 
     removeSelectedArtist(index) {
         globalArtistsList.splice(index, 1);
-        this.setState(this.render);
+        this.setState({artistsFull: false},
+            this.render);
     }
 
     renderSearchResults() {
@@ -124,9 +125,6 @@ export default class SearchArtist extends Component {
         var outer_this = this;
         if (globalArtistsList.length != 0) {
             listOfArtists = globalArtistsList.map(function(artist, idx){
-                // onClick(idx) {
-                //     globalArtistsList.splice(idx, 1);
-                // }
                 return (
                 <button className="selected-li-item" onClick={() => outer_this.removeSelectedArtist(idx)} key={idx}>{artist.name} &nbsp; <span class="text-color-pink text-bold text-twentytwo">X</span></button>
                 )
