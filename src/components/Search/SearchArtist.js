@@ -121,7 +121,7 @@ export default class SearchArtist extends Component {
         }
     }
 
-    render() {
+    renderSelectedArtists() {
         var listOfArtists = null;
         var outer_this = this;
         if (globalArtistsList.length != 0) {
@@ -130,7 +130,25 @@ export default class SearchArtist extends Component {
                 <button className="selected-li-item" onClick={() => outer_this.removeSelectedArtist(idx)} key={idx}>{artist.name} &nbsp; <span class="text-color-pink text-bold text-twentytwo">X</span></button>
                 )
                 });
-        } 
+        }
+        if (globalArtistsList.length != 0) {
+            return (
+                <div className="selected-builder-element-div">
+                    <div className="builder-elements-right-align">
+                        <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
+                    </div>
+                    <div className="builder-elements-left-align">
+                        {listOfArtists}
+                    </div>
+                </div>
+            );
+        } else {
+            return;
+        }
+        
+    }
+
+    render() {
 
         return (
             <div>
@@ -148,16 +166,7 @@ export default class SearchArtist extends Component {
                     </div>
                 </div>
 
-                <div className="selected-builder-element-div">
-                    <div className="builder-elements-right-align">
-                        <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
-                    </div>
-                    <div className="builder-elements-left-align">
-                        {listOfArtists}
-                    </div>
-
-                    
-                </div>
+                { this.renderSelectedArtists() }
                 <div style={{clear:'both'}}></div>
                 { this.renderMaxArtistsReached() }
                 { this.renderSearchResults() }

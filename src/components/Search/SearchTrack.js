@@ -121,14 +121,7 @@ export default class SearchTrack extends Component {
         }
     }
 
-    render() {
-        // var listOfTracks = null;
-        if (globalTracksList.length != 0) {
-            listOfTracks = globalTracksList.map(function(track, idx){
-                return (<li key={idx}>{track.name}</li>)
-                });
-        }
-
+    renderSelectedTracks() {
         var listOfTracks = null;
         var outer_this = this;
         if (globalTracksList.length != 0) {
@@ -138,6 +131,21 @@ export default class SearchTrack extends Component {
                 )
                 });
         }
+        if (globalTracksList.length != 0) {
+            return (
+                <div className="selected-builder-element-div">
+                    <div className="builder-elements-right-align">
+                        <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
+                    </div>
+                    <div className="builder-elements-left-align">
+                        {listOfTracks}
+                    </div>   
+                </div>
+            );
+        }
+    }
+
+    render() {
 
         return (
             <div>
@@ -154,30 +162,17 @@ export default class SearchTrack extends Component {
                         />
                     </div>
                 </div>
-                {/* <div className="general-builder-element-div">
-                    <div className="builder-elements-right-align">
-                        <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
-                        {listOfTracks}
-                        { this.renderMaxTracksReached() }
-                    </div>
-                </div> */}
 
 
-                <div className="selected-builder-element-div">
-                    <div className="builder-elements-right-align">
-                        <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
-                    </div>
-                    <div className="builder-elements-left-align">
-                        {listOfTracks}
-                    </div>   
-                </div>
+                { this.renderSelectedTracks() }
+
                 <div style={{clear:'both'}}></div>
                 { this.renderMaxTracksReached() }
 
 
                 <div>
                     <div className="container">
-                        {/*Result*/}
+
                         { this.renderSearchResults() }
                     </div>
                 </div>

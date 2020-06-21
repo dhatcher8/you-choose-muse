@@ -417,9 +417,11 @@ export default class PlaylistGenerator extends Component {
         }
         return (
             <div>
-                <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
-                    Generate!
-                </button>  
+                <div className="generate-builder-button-div">
+                    <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
+                        Generate!
+                    </button>  
+                </div>
 
                 {/* <button className="playlist-button-save button-pink" onClick={() => this.onClickSave()}>
                         {this.state.buttonText}
