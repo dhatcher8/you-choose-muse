@@ -138,7 +138,9 @@ export default class SearchTrack extends Component {
                         <div className="sub-title-text-home"> Selected Tracks: &nbsp;</div>
                     </div>
                     <div className="builder-elements-left-align">
-                        {listOfTracks}
+                        <div className="selected-elements-div">
+                            {listOfTracks}
+                        </div>
                     </div>   
                 </div>
             );

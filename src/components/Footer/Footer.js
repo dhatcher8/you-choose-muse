@@ -52,11 +52,14 @@ export default class Header extends Component {
                 
                 <div className="footer-text-logo-div">
                     {/* <h3 className="footer-text">Give us Feedback!</h3> */}
-                    <a href="#" onClick={() => this.goToFeedback()}>
+                    {/* <a href="#" onClick={() => this.goToFeedback()}>
+                        <img className="icon-extra-small" src={emailLogo} alt="Email"/>
+                    </a> */}
+                    <a href="mailto:youchoosemuse@gmail.com">
                         <img className="icon-extra-small" src={emailLogo} alt="Email"/>
                     </a>
                     {/* <h3 className="footer-text">Find us on Github!</h3> */}
-                    <a href="https://github.com/dhatcher8/spotify-playlist-builder" >
+                    <a href="https://github.com/dhatcher8/spotify-playlist-builder" target="_blank" rel="noopener noreferrer">
                         <img className="icon-extra-small" src={githubLogo} alt="Github"/>
                     </a>
                 </div>

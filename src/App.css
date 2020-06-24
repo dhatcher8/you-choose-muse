@@ -530,6 +530,10 @@
   display: table;
 }
 
+.selected-elements-div {
+  width: 85%;
+}
+
 .playlist-length-button {
   padding: 7px 21px;
   margin-top: 10px;
@@ -640,7 +644,7 @@
    mix-blend-mode: screen;
    filter: grayscale(100%) contrast(140%);
    opacity: .6;
- }
+}
 
 /* Footer */
 

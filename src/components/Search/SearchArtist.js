@@ -138,7 +138,9 @@ export default class SearchArtist extends Component {
                         <div className="sub-title-text-home"> Selected Artists: &nbsp;</div>
                     </div>
                     <div className="builder-elements-left-align">
-                        {listOfArtists}
+                        <div className="selected-elements-div">
+                            {listOfArtists}
+                        </div>
                     </div>
                 </div>
             );
