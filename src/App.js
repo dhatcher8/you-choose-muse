@@ -18,6 +18,7 @@ import TopArtists from "./pages/TopArtists";
 import Playlist from "./pages/CreatedPlaylist";
 import GetTokenRedirect from "./pages/GetTokenRedirect";
 import AboutUs from "./pages/AboutUs";
+import ScreenWidthError from "./pages/ScreenWidthError";
 
 const spotifyWebApi = new Spotify();
 
@@ -28,6 +29,7 @@ class App extends Component {
       <div className="App">
         <div>
           <Route exact path="/" component={Welcome}/>
+          <Route exact path="/width-error" component={ScreenWidthError}/>
           <Route exact path="/learn-more" component={LearnMore}/>
           <Route exact path="/token" component={GetTokenRedirect}/>
           <Route exact path="/home" component={Home}/>

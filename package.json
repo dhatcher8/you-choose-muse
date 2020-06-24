@@ -9,6 +9,8 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "chroma-js": "^2.1.0",
+    "dotenv": "^8.2.0",
+    "env-cmd": "^10.1.0",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",

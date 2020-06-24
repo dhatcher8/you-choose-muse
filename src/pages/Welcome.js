@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import logoBig from '../images/logo-big.png'
-import logoWithTextBig from '../images/logo-with-text-big.png'
+import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+import logoBig from '../images/logo-big.png';
+import logoWithTextBig from '../images/logo-with-text-big.png';
 import Footer from "../components/Footer/Footer";
 
 // import Spotify from 'spotify-web-api-js';
@@ -11,6 +12,13 @@ export default class Welcome extends Component {
     
 
     render() {
+      if (window.innerWidth < 854) {
+        return (
+          <Redirect to='/width-error'/>
+        );
+        
+      }
+      console.log(window.innerWidth);
         return (
           <div className="background-div-navy">
             <div>
