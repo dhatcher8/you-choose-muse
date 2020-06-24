@@ -642,6 +642,60 @@
    opacity: .6;
  }
 
+/* Footer */
+
+.icon-extra-small {
+  /* display: inline-block; */
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+}
+
+.footer-div-full-length {
+  height: auto;
+  /* margin-bottom: 20px; */
+
+  /* margin-top: -100px; */
+  /* negative value of footer height */
+  height: 100px;
+
+
+  overflow: hidden;
+  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+  clear: both;
+}
+
+.outer-footer-div {
+  height: 100px;
+  display: block;
+  background-color: #142850;
+}
+
+.footer-text-logo-div {
+  padding: 10px;
+  /* display: inline-block; */
+}
+
+.footer-text {
+  /* display: inline-block; */
+  font-family: "Tw Cen MT";
+  font-size: 18px;
+  color: #f5f5f5;
+  text-decoration: none;
+  padding: 10px;
+}
+
+
+
+
 /* Beginner Stuff That I Was Using Previously */
 
 .App {

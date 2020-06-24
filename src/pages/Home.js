@@ -7,6 +7,7 @@ import GenreSelect from "../components/GenreSelect/GenreSelect";
 import PlaylistLength from "../components/PlaylistLength/PlaylistLength";
 import PlaylistGenerator from "../components/PlaylistGenerator/PlaylistGenerator";
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 import {spotifyWebApi} from './GetTokenRedirect';
 
@@ -63,8 +64,10 @@ export default class Home extends Component {
 
             return (
                 <div>             
-                    <Header/>
+                    
                     <div className="background-div-navy">
+                        <Header/>
+                        <div>
                         {/* <div className="general-div">
                             <button onClick={() => this.goToRecentlyPlayed()}> See Recently Played</button>
                             <button onClick={() => this.goToTopTracks()}> See Your Top Tracks</button>
@@ -96,9 +99,12 @@ export default class Home extends Component {
                         <SearchTrack/>
                         <GenreSelect/>
                         <PlaylistGenerator/>
-
+                        </div>
+                        <div className="outer-footer-div">
+                            <Footer/>
+                        </div>
                     </div>
-
+                    
                 </div>
 
           )

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import AboutUsComponent from "../components/AboutUs/AboutUsComponent";
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 export default class AboutUs extends Component {
     render() {
@@ -9,6 +10,9 @@ export default class AboutUs extends Component {
             <div>
                 <Header/>
                 <AboutUsComponent/>
+                <div className="outer-footer-div">
+                    <Footer/>
+                </div>
             </div>
         )
     }
