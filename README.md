@@ -11,20 +11,20 @@ You Choose, Muse crafts playlist recommendations from a combination of your choi
 
 This application uses Spotify Web API to allow users to see different aspects of their play history. The app also uses Spotify's recommendation algorithm to generate tracks similar to the user's chosen parameters and save these playlists to a user's profile.
 
-#####The application uses the following parts of Spotify's Web API:
+### The application uses the following parts of Spotify's Web API:
 
 - [Authorization](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
 - [Get users Top Tracks and Artists](https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/)
 - [Get Recently played tracks for user](https://developer.spotify.com/documentation/web-api/reference/player/get-recently-played/)
-- [Search for Tracks and Artists] (https://developer.spotify.com/documentation/web-api/reference/search/search/)
-- [Get a list of available Genres] (https://developer.spotify.com/console/get-available-genre-seeds/)
-- [Get Track Recommendations based on Seeds] (https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/)
+- [Search for Tracks and Artists](https://developer.spotify.com/documentation/web-api/reference/search/search/)
+- [Get a list of available Genres](https://developer.spotify.com/console/get-available-genre-seeds/)
+- [Get Track Recommendations based on Seeds](https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/)
 - [Creating playlist](https://developer.spotify.com/documentation/web-api/reference/playlists/create-playlist/)
 - [Adding tracks to playlist](https://developer.spotify.com/documentation/web-api/reference/playlists/add-tracks-to-playlist/)
 
 ### To Create a Spotify App
 
-Go to [https://developer.spotify.com/dashboard/] (https://developer.spotify.com/dashboard/), log in and create a new App.
+Go to [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/), log in and create a new App.
 
 Add `localhost:3000/callback` as _Redirect URI_ in your Spotify App Settings.
 
