@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import {spotifyWebApi} from '../../pages/GetTokenRedirect'
-import './Search.css';
 
 var prev = null;
 export var globalArtistsList = [];

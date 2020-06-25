@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
-import './Header.css';
 import logoBig from '../../images/logo-big.png'
 
 

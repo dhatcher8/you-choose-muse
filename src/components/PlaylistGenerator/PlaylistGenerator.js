@@ -9,7 +9,6 @@ import {globalTracksList} from '../Search/SearchTrack';
 import {globalGenresList} from '../GenreSelect/GenreSelect';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './PlaylistGenerator.css'
 
 export var globalPlaylist = [];
 

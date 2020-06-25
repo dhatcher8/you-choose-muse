@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import {globalPlaylist} from '../PlaylistGenerator/PlaylistGenerator';
 
-import './PlaylistFormatting.css'
-
 export default class PlaylistFormatting extends Component {
     
     constructor() {

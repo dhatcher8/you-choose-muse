@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import './GenreSelect.css';
 
 import {spotifyWebApi} from '../../pages/GetTokenRedirect'
 import {selectStyle} from './GenreSelectStyle';

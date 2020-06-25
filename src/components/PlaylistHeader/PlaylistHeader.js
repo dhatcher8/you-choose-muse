@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import './PlaylistHeader.css';
-
 import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 import {globalPlaylist} from '../PlaylistGenerator/PlaylistGenerator';
 import {globalPlaylistName} from '../../pages/Home';
