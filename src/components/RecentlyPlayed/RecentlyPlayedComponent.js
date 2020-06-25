@@ -19,27 +19,17 @@ export default class RecentlyPlayedComponent extends Component {
     }
     
     getTrackPlaylist() {
-        // console.log(spotifyWebApi.getAccessToken());
         spotifyWebApi.getMyRecentlyPlayedTracks({
             limit : 50
         }).then(
             function(data) {
-                // newTrackPlaylist = data;
-                // this.recentlyPlayedList = data;
                 this.setState({ recentlyPlayedList : data.items})
-                console.log(data.items);
-                // console.log(this.recentlyPlayedList.items);
             }.bind(this),
             function (err) {
                 console.error(err);
                 this.setState({ playlistGenerationFailure : true });
             }.bind(this)
         );
-        // console.log(newTrackPlaylist);
-        // return newTrackPlaylist;
-        console.log("we made it here");
-        // console.log(recentlyPlayedList);
-        // this.render();
     }
 
     onClick() {
@@ -50,7 +40,6 @@ export default class RecentlyPlayedComponent extends Component {
     getUserID() {
         spotifyWebApi.getMe().then(
             function(data) {
-                // console.log(data);
                 this.setState({ userID : data.id}, this.createPlaylist);
             }.bind(this),
             function (err) {
@@ -80,19 +69,13 @@ export default class RecentlyPlayedComponent extends Component {
     }
 
     addSongsToPlaylist() {
-        // console.log(globalPlaylist);
-        // console.log(this.state.newPlaylistData);
         var trackURIs1 = [];
         var i;
         for (i = 0; i < 50; i++) {
             trackURIs1.push(this.state.recentlyPlayedList[i].track.uri);
         }
-
-        // console.log(trackURIs1, trackURIs2);
-
         spotifyWebApi.addTracksToPlaylist(this.state.userID, this.state.newPlaylistData.id, trackURIs1).then(
             function(data) {
-                // console.log(data);
                 this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
             }.bind(this),
             function (err) {
@@ -122,10 +105,8 @@ export default class RecentlyPlayedComponent extends Component {
         }
         else {
             var rpl = this.state.recentlyPlayedList;
-            // console.log(rpl);
         }
         var i;
-        console.log(rpl);
         for (i = 0; i < rpl.length; i++) {
             try {
                 rpl[i].track.album.images[0].url = rpl[i].track.album.images[0].url;
@@ -136,7 +117,6 @@ export default class RecentlyPlayedComponent extends Component {
                     rpl.splice(i, 1);
                 } else {
                     if (rpl[i].track.album.images.length < 1 || rpl[i].track.album.images == undefined) {
-                        console.log("true");
                         rpl[i].track.album.images[0] = { url: ''};
                     } else {
                         rpl[i].track.album.images[0].url = { url: ''};
@@ -153,11 +133,6 @@ export default class RecentlyPlayedComponent extends Component {
                         <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
                         {this.state.buttonText}
                         </button> 
-                        {/* <Button className="btn-primary" className="playlist-button-position" className="playlist-button" className={
-                            this.state.buttonIsActive ? 'playlist-btn-active' : 'playlist-btn-inactive'} onClick={() => this.onClick()}
-                            >
-                        {this.state.buttonText}
-                        </Button>   */}
                     </div>
                     
                 </div>
@@ -167,14 +142,11 @@ export default class RecentlyPlayedComponent extends Component {
                             return (
                                 <a 
                                     key={result.id} 
-                                    href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
+                                    href={null} 
                                     className="playlist-individual-items"
-                                    // onClick={this.artistSelected.bind(this,result)}
                                 >
                                     <h6 className="playlist-item-number">{index+1}</h6>
-                                    {/* </a><div className="image-wrapper"> */}
                                     <img className="playlist-item-image" src={result.track.album.images[0].url} alt={result.track.album.name}/> 
-                                    {/* </div>  */}
                                     <div className="playlist-item-text">
                                         <div className="playlist-item-text-one">{result.track.name}</div>
                                         <div className="playlist-item-text-two">{result.track.artists[0].name}</div>

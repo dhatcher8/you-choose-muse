@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# You Choose, Muse
 
-## Available Scripts
+> Playlists Inspired by Your Desires
 
-In the project directory, you can run:
+![](src/images/logo-with-text-big.png)
 
-### `npm start`
+You Choose, Muse crafts playlist recommendations from a combination of your choice of artists, tracks, and genres. See your top tracks and artists as well as your recently played tracks for inspiration.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Spotify API
 
-### `npm test`
+This application uses Spotify Web API to allow users to see different aspects of their play history. The app also uses Spotify's recommendation algorithm to generate tracks similar to the user's chosen parameters and save these playlists to a user's profile.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#####The application uses the following parts of Spotify's Web API:
 
-### `npm run build`
+- [Authorization](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
+- [Get users Top Tracks and Artists](https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/)
+- [Get Recently played tracks for user](https://developer.spotify.com/documentation/web-api/reference/player/get-recently-played/)
+- [Search for Tracks and Artists] (https://developer.spotify.com/documentation/web-api/reference/search/search/)
+- [Get a list of available Genres] (https://developer.spotify.com/console/get-available-genre-seeds/)
+- [Get Track Recommendations based on Seeds] (https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/)
+- [Creating playlist](https://developer.spotify.com/documentation/web-api/reference/playlists/create-playlist/)
+- [Adding tracks to playlist](https://developer.spotify.com/documentation/web-api/reference/playlists/add-tracks-to-playlist/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### To Create a Spotify App
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Go to [https://developer.spotify.com/dashboard/] (https://developer.spotify.com/dashboard/), log in and create a new App.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Add `localhost:3000/callback` as _Redirect URI_ in your Spotify App Settings.
 
-### `npm run eject`
+Grab the _Client Id_ and _Client Secret_ that will be added to env.js.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Development
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Application is based on [create-react-app](https://github.com/facebook/create-react-app)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To get the app up and running, from the root directory: 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Run `npm install`
+- Create a `.env` file in the `src` directory and add in your `REACT_APP_CLIENT_ID` and `REACT_APP_CLIENT_SECRET` from your Spotify app
+- To start up the server run: `node src/server.js`
+- To start up the client, run: `npm start`

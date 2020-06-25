@@ -24,11 +24,9 @@ export default class SearchTrack extends Component {
 
     updateSearch(event) {
         this.setState({search: event.target.value});
-        // console.log(spotifyWebApi);
     }
     
     getTracks(queryString) {
-        //query spotify api for tracks
         if (prev !== null) {
             prev.abort();
         }
@@ -36,12 +34,11 @@ export default class SearchTrack extends Component {
             this.setState({queriedTracks: []});
             return;
         }
-        prev = spotifyWebApi.searchTracks(queryString, { limit: 8 }); // THIS LINE NEEDS FIXING
+        prev = spotifyWebApi.searchTracks(queryString, { limit: 8 });
         prev.then(
             function (data) {
                 prev = null;
                 this.setState({queriedTracks: data});
-                // console.log(data)
             }.bind(this),
             function (err) {
                 console.error(err);
@@ -59,9 +56,6 @@ export default class SearchTrack extends Component {
         }
         this.setState({ search : "" });
         this.getTracks('')
-
-
-        // console.log(trackInfo);
         
     }
 
@@ -82,12 +76,11 @@ export default class SearchTrack extends Component {
             this.render);
     }
 
-    renderSearchResults() { // THIS WHOLE FUNCTION NEEDS FIXING
+    renderSearchResults() {
         if (this.state.queriedTracks.length == 0 || this.state.queriedTracks.tracks.items.length == 0) {
             return;
         }
 
-        // console.log(this.state.queriedTracks)
         const tracks = this.state.queriedTracks.tracks.items;
         if (tracks.length) {
             var i;
@@ -105,7 +98,7 @@ export default class SearchTrack extends Component {
                         return (
                             <a 
                                 key={result.id} 
-                                href={null} //later this href can add track also can later fill in the alt under image source as a common image or something
+                                href={null} 
                                 className="search-result-items"
                                 onClick={this.trackSelected.bind(this,result)}
                             >

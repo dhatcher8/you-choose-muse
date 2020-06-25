@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
 import {globalPlaylistName} from '../../pages/Home';
@@ -37,14 +36,11 @@ export default class PlaylistGenerator extends Component {
           tp: "stop",
           gp: "stop",
         }
-        console.log(spotifyWebApi.getAccessToken());
     }
 
     onClick() {
         this.setState({buttonIsActive: true});
         this.getAllParameters();
-        // this.checkForAllParameters();
-        // this.generateNewPlaylist();
     }
 
     getAllParameters() {
@@ -52,32 +48,23 @@ export default class PlaylistGenerator extends Component {
         /* Create List of Artists */
         var tempArtists = [];
         var i;
-        // console.log(globalArtistsList);
         for (i = 0; i < globalArtistsList.length; i++) {
             tempArtists.push(globalArtistsList[i].id);
         }
-        // this.setState({ artists : tempArtists });
-        // console.log(tempArtists);
 
         /* Create List of Tracks*/
         var tempTracks = [];
         var j;
-        // console.log(globalTracksList);
         for (j = 0; j < globalTracksList.length; j++) {
             tempTracks.push(globalTracksList[j].id);
         }
-        // this.setState({ tracks : tempTracks });
-        // console.log(tempTracks);
 
         /* Create List of Genres*/
         var tempGenres = [];
         var k;
-        // console.log(globalGenresList);
         for (k = 0; k < globalGenresList.length; k++) {
             tempGenres.push(globalGenresList[k].value);
         }
-        // this.setState({ genres : tempGenres });
-        // console.log(tempGenres);
         
         /* Set all parameters in state at once and wait before performing next function */
         this.setState({
@@ -90,11 +77,6 @@ export default class PlaylistGenerator extends Component {
             this.checkForAllParameters
         );
 
-        // console.log(globalPlaylistName);
-        // console.log(globalPlaylistLength);
-        // console.log(globalArtistsList)
-        // console.log(globalTracksList);
-        // console.log(globalGenresList);
     }
 
     checkForAllParameters() {
@@ -119,22 +101,14 @@ export default class PlaylistGenerator extends Component {
 
         var totalSeeds = this.state.genres.length + this.state.artists.length + this.state.tracks.length;
 
-        // if (totalSeeds > 5) {
-        //     this.setState({tooManySeeds: true});
-        //     return;
-        // } else {
-        //     this.setState({tooManySeeds: false});
-        // }
         this.setState({totalparams : totalSeeds}, this.getMasterPlaylist);
 
         /* Call generate from a callback to make sure all values in state updated */
-        // this.setState(this.getMasterPlaylist);
 
     }
 
     getMasterPlaylist() {
         var atg = this.getSizesOfSubPlaylists();
-        console.log(atg);
         var a = atg[0];
         var t = atg[1];
         var g = atg[2];
@@ -153,35 +127,13 @@ export default class PlaylistGenerator extends Component {
         } else {
             this.setState({gp:[]});
         }
-        console.log(this.state);
         this.waitForPlaylistUpdates();
-
-
-        // var ap = this.state.ap;
-        // var tp = this.state.tp;
-        // var gp = this.state.gp;
-        // console.log(this.state.ap);
-        // // var ap = this.getArtistPlaylist(a);
-        // // var tp = this.getTrackPlaylist(t);
-        // // var gp = this.getGenrePlaylist(g);
-        // var masterPlaylist = ap.concat(tp).concat(gp);
-        // console.log(masterPlaylist);
-        // var i,j,x;
-        // for (i = masterPlaylist.length - 1; i > 0; i--) {
-        //     j = Math.floor(Math.random() * (i + 1));
-        //     x = masterPlaylist[i];
-        //     masterPlaylist[i] = masterPlaylist[j];
-        //     masterPlaylist[j] = x;
-        // }
-        // console.log(masterPlaylist);
-        // this.setState({ generatedPlaylist : masterPlaylist}, this.goToPlaylistPage);
 
     }
 
     waitForPlaylistUpdates() {
         
         if (this.state.ap != "stop" && this.state.tp != "stop" && this.state.gp != "stop") {
-            console.log(this.state.ap, this.state.tp, this.state.gp);
             this.shuffleMasterPlaylist();
         } else {
             setTimeout(this.waitForPlaylistUpdates.bind(this), 200);
@@ -192,14 +144,11 @@ export default class PlaylistGenerator extends Component {
         var ap = this.state.ap;
         var tp = this.state.tp;
         var gp = this.state.gp;
-        console.log(this.state.ap.tracks);
         var masterPlaylist = [];
         if (ap.length != 0) {
             masterPlaylist = ap.tracks;
             if (tp.length != 0) {
                 masterPlaylist = masterPlaylist.concat(tp.tracks);
-                console.log(tp.tracks);
-                console.log(masterPlaylist);
             }
             if (gp.length != 0) {
                 masterPlaylist = masterPlaylist.concat(gp.tracks);
@@ -212,8 +161,6 @@ export default class PlaylistGenerator extends Component {
         } else {
             masterPlaylist = gp.tracks;
         }
-        // var masterPlaylist = ap.concat(tp).concat(gp);
-        console.log(masterPlaylist);
         var i,j,x;
         for (i = masterPlaylist.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
@@ -221,15 +168,12 @@ export default class PlaylistGenerator extends Component {
             masterPlaylist[i] = masterPlaylist[j];
             masterPlaylist[j] = x;
         }
-        console.log(masterPlaylist);
         this.setState({ generatedPlaylist : masterPlaylist}, this.goToPlaylistPage);
 
     }
 
     getSizesOfSubPlaylists() {
-        // console.log((this.state.genres.length));
-        // console.log((this.state.totalparams));
-        // console.log((this.state.genres.length / this.state.totalparams));
+
         var a,t,g;
         if (this.state.artists.length == 0) {
             a = 0;
@@ -266,40 +210,32 @@ export default class PlaylistGenerator extends Component {
             g = Math.floor((this.state.genres.length / this.state.totalparams) * this.state.playlistLength);
             t = Math.floor((this.state.tracks.length / this.state.totalparams) * this.state.playlistLength);
             a = this.state.playlistLength - (g + t);
-            // console.log(g,t,a);
         }
         var atg = [a,t,g];
         return atg;
     }
 
     getArtistPlaylist(size) {
-        // var newArtistPlaylist = [];
         spotifyWebApi.getRecommendations({
             limit : size,
             seed_artists : this.state.artists
         }).then(
             function(data) {
-                // this.newArtistPlaylist = data;
                 this.setState({ ap : data});
-                console.log(data);
             }.bind(this),
             function (err) {
                 console.error(err);
                 this.setState({ playlistGenerationFailure : true });
             }.bind(this)
         );
-        // console.log(newArtistPlaylist);
-        // return newArtistPlaylist;
     }
 
     getTrackPlaylist(size) {
-        // var newTrackPlaylist = [];
         spotifyWebApi.getRecommendations({
             limit : size,
             seed_tracks : this.state.tracks
         }).then(
             function(data) {
-                // newTrackPlaylist = data;
                 this.setState({ tp : data})
             }.bind(this),
             function (err) {
@@ -307,18 +243,14 @@ export default class PlaylistGenerator extends Component {
                 this.setState({ playlistGenerationFailure : true });
             }.bind(this)
         );
-        // console.log(newTrackPlaylist);
-        // return newTrackPlaylist;
     }
 
     getGenrePlaylist(size) {
-        // var newGenrePlaylist = [];
         spotifyWebApi.getRecommendations({
             limit : size,
             seed_genres : this.state.genres
         }).then(
             function(data) {
-                // newGenrePlaylist = data;
                 this.setState({ gp : data})
             }.bind(this),
             function (err) {
@@ -326,32 +258,9 @@ export default class PlaylistGenerator extends Component {
                 this.setState({ playlistGenerationFailure : true });
             }.bind(this)
         );
-        // console.log(newGenrePlaylist);
-        // return newGenrePlaylist;
     }
 
-    // generateNewPlaylist() {
-    //     // console.log(this.state.artists);
-
-    //     spotifyWebApi.getRecommendations({
-    //         limit : this.state.playlistLength,
-    //         seed_artists : this.state.artists,
-    //         seed_genres : this.state.genres,
-    //         seed_tracks : this.state.tracks
-    //     }).then(
-    //         function(data) {
-    //             this.setState({ generatedPlaylist : data}, this.goToPlaylistPage);
-    //         }.bind(this),
-    //         function (err) {
-    //             console.error(err);
-    //             this.setState({ playlistGenerationFailure : true });
-    //         }.bind(this)
-    //     );
-        
-    // }
-
     goToPlaylistPage() {
-        console.log(this.state.generatedPlaylist); 
         globalPlaylist = this.state.generatedPlaylist;
         this.setState({ redirect: "../playlist" });
     }
@@ -389,16 +298,6 @@ export default class PlaylistGenerator extends Component {
         return;
     }
 
-    // renderTooManySeeds() {
-    //     if (this.state.tooManySeeds) {
-    //         return (
-    //             <div className="warning-text">
-    //                 Make sure you have no more than 5 total artists, tracks, and genres selected!
-    //             </div>
-    //         );
-    //     }
-    //     return;
-    // }
 
     renderPlaylistGeneratorFailed() {
         if (this.state.playlistGenerationFailure) {
@@ -423,14 +322,10 @@ export default class PlaylistGenerator extends Component {
                     </button>  
                 </div>
 
-                {/* <button className="playlist-button-save button-pink" onClick={() => this.onClickSave()}>
-                        {this.state.buttonText}
-                        </button> */}
                 <div>
                     { this.renderPlaylistNameRequired() }
                     { this.renderPlaylistLengthRequired() }
                     { this.renderSomeParametersRequired() }
-                    {/* { this.renderTooManySeeds() } */}
                     { this.renderPlaylistGeneratorFailed() }
                 </div>
             </div>

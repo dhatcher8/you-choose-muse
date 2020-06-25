@@ -1,10 +1,6 @@
 
 import React, { Component } from 'react';
-import {
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 import './App.css';
 import Spotify from 'spotify-web-api-js';
@@ -43,8 +39,6 @@ class App extends Component {
     )
   }
 }
-
-
 
 
 export default App;

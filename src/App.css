@@ -1,11 +1,10 @@
 
 /* Hex Codes For Colors:
-    navy-color : #142850
+    navy : #142850
     teal : #3fc1c9
     pink : #ff5c87
-    slightly-gray : #f5f5f5
+    off-white : #f5f5f5
 */
-
 
 /* Fonts */
 
@@ -134,7 +133,6 @@
 }
 
 .text-teal, .text-teal:hover {
-  /* text-decoration: none; */
   color: #3fc1c9;
 }
 
@@ -450,22 +448,25 @@
   height: 70px;
 }
 
+.genre-builder-element-div {
+  min-height: 70px;
+  display: flex;
+}
+
 .generate-builder-button-div {
   padding: 20px;
+  display: block;
 }
 
 .selected-builder-element-div {
   min-height: 70px;
   display: flex;
-  /* overflow: hidden; */
-  /* height: max-content; */
 }
 
 .builder-lone-text {
   color: #f5f5f5;
   font-family: "Tw Cen MT";
   font-size: 18px;
-  /* width: 350px; */
   margin: 0 auto 0 auto;
   padding: 11px;
   height: 50px;
@@ -476,7 +477,6 @@
   margin: 10px 0;
   border-style: none;
   width: 300px;
-  /* box-sizing: border-box; */
   border-radius: 10px;
   background-color: #3fc1c9;
   color: #f5f5f5;
@@ -492,8 +492,6 @@
 }
 
 .genre-input {
-  /* padding: 7px 20px;
-  margin: 10px 0; */
   padding-top: 11px;
   border-style: none;
   width: 300px;
@@ -540,7 +538,6 @@
   margin-bottom: 10px;
   margin-right: 10px;
   border-style: none;
-  /* box-sizing: border-box; */
   border-radius: 10px;
   background-color: #3fc1c9;
   color: #f5f5f5;
@@ -554,7 +551,6 @@
   margin-bottom: 10px;
   margin-right: 10px;
   border-style: none;
-  /* box-sizing: border-box; */
   border-radius: 10px;
   background-color: #3fc1c9;
   color: #f5f5f5;
@@ -572,7 +568,6 @@
   margin-bottom: 10px;
   margin-right: 10px;
   border-style: none;
-  /* box-sizing: border-box; */
   border-radius: 10px;
   background-color: #ff5c87;
   color: #f5f5f5;
@@ -584,12 +579,12 @@
   color: #f5f5f5;
   font-family: "Tw Cen MT";
   font-size: 18px;
-  /* width: 350px; */
   margin: 0 auto 0 auto;
   padding-top: 19px;
 }
 
 /* Search Results */
+
 .search-results-container {
 	display: inline-block;
     flex-flow: wrap;
@@ -649,7 +644,6 @@
 /* Footer */
 
 .icon-extra-small {
-  /* display: inline-block; */
   height: 40px;
   width: 40px;
   margin-left: 10px;
@@ -660,13 +654,7 @@
 
 .footer-div-full-length {
   height: auto;
-  /* margin-bottom: 20px; */
-
-  /* margin-top: -100px; */
-  /* negative value of footer height */
   height: 100px;
-
-
   overflow: hidden;
   padding-top: 20px;
   position: absolute;
@@ -685,11 +673,9 @@
 
 .footer-text-logo-div {
   padding: 10px;
-  /* display: inline-block; */
 }
 
 .footer-text {
-  /* display: inline-block; */
   font-family: "Tw Cen MT";
   font-size: 18px;
   color: #f5f5f5;
@@ -720,8 +706,7 @@
 }
 
 
-
-/* Beginner Stuff That I Was Using Previously */
+/* Early Stuff */
 
 .App {
   text-align: center;

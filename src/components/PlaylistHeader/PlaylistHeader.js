@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
 
 import './PlaylistHeader.css';
 
@@ -12,7 +11,6 @@ import {globalPlaylistLength} from '../PlaylistLength/PlaylistLength';
 export default class PlaylistHeader extends Component {
     
     constructor() {
-        // console.log(spotifyWebApi.getAccessToken());
         super();
         this.state = {
             playlistEmpty: false,
@@ -25,8 +23,6 @@ export default class PlaylistHeader extends Component {
                 playlistEmpty : true
             })
         }
-        console.log(globalPlaylist);
-        
     }
 
     onClick() {
@@ -37,7 +33,6 @@ export default class PlaylistHeader extends Component {
     getUserID() {
         spotifyWebApi.getMe().then(
             function(data) {
-                // console.log(data);
                 this.setState({ userID : data.id}, this.createPlaylist);
             }.bind(this),
             function (err) {
@@ -47,14 +42,12 @@ export default class PlaylistHeader extends Component {
     }
 
     createPlaylist() {
-        // console.log(this.state.userID)
         spotifyWebApi.createPlaylist(this.state.userID, {
             "name": globalPlaylistName,
             "description": "Recommendation Playlist Made By You Choose, Muse",
             "public": true
         }).then(
             function(data) {
-                // console.log(data);
                 this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
             }.bind(this),
             function (err) {
@@ -64,8 +57,6 @@ export default class PlaylistHeader extends Component {
     }
 
     addSongsToPlaylist() {
-        // console.log(globalPlaylist);
-        // console.log(this.state.newPlaylistData);
         var trackURIs1 = [];
         var trackURIs2 = [];
         var i;
@@ -77,11 +68,8 @@ export default class PlaylistHeader extends Component {
             trackURIs2.push(globalPlaylist[j].uri);
         }
 
-        // console.log(trackURIs1, trackURIs2);
-
         spotifyWebApi.addTracksToPlaylist(this.state.userID, this.state.newPlaylistData.id, trackURIs1).then(
             function(data) {
-                // console.log(data);
                 this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
             }.bind(this),
             function (err) {
@@ -91,7 +79,6 @@ export default class PlaylistHeader extends Component {
 
         spotifyWebApi.addTracksToPlaylist(this.state.userID, this.state.newPlaylistData.id, trackURIs2).then(
             function(data) {
-                // console.log(data);
                 this.setState({ newPlaylistData : data}, this.addSongsToPlaylist);
             }.bind(this),
             function (err) {
@@ -102,7 +89,6 @@ export default class PlaylistHeader extends Component {
     }
     
     render() {
-        // console.log(globalPlaylist);
         if (globalPlaylist.length == 0) {
             return null;
         }
@@ -113,13 +99,9 @@ export default class PlaylistHeader extends Component {
                     <button className="playlist-button-save button-pink" onClick={() => this.onClick()}>
                     {this.state.buttonText}
                     </button> 
-                    {/* <button className="playlist-button-save button-pink" >Login with Spotify.</button> */}
                 </div>
                 
             </div>
         )
     }
 }
-
-// className={
-//     this.state.buttonIsActive ? 'playlist-btn-active' : 'playlist-btn-inactive'}

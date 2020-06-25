@@ -1,4 +1,4 @@
-.warning-container {
+/* .warning-container {
     color : red;
     padding: 30px;
 }
@@ -22,15 +22,12 @@
     flex-flow: wrap;
     padding-top: 11px ;
     padding-bottom: 11px ;
-    /* top: 10px; */
-    /* bottom: 10px; */
     border: 0px solid #898989;
     background-color: black;
 	margin: 0px;
     text-align: center;
     align-items: center;
 	min-width: 70%;
-	/* text-decoration: none; */
     box-shadow: 0px 0px 0px #898989;
     cursor: default;
  
@@ -40,7 +37,6 @@
     color: white;
     text-align: left;
     position: relative;
-    /* top: 14px; */
 	padding: 20px ;
 }
 
@@ -63,4 +59,4 @@
 .artist-name {
     color: white;
     font-style: italic;
-}
+} */

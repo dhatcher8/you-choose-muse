@@ -24,11 +24,9 @@ export default class SearchArtist extends Component {
 
     updateSearch(event) {
         this.setState({search: event.target.value});
-        // console.log(spotifyWebApi);
     }
     
     getAlbums(queryString) {
-        //query spotify api for artists
         if (prev !== null) {
             prev.abort();
         }
@@ -59,8 +57,6 @@ export default class SearchArtist extends Component {
         this.setState({ search : "" });
         this.getAlbums('')
 
-
-        // console.log(artistInfo);
         
     }
 
@@ -86,7 +82,6 @@ export default class SearchArtist extends Component {
             return;
         }
 
-        // console.log(this.state.queriedArtists)
         const artists = this.state.queriedArtists.artists.items;
         if (artists.length) {
             var i;
@@ -104,7 +99,7 @@ export default class SearchArtist extends Component {
                         return (
                             <a 
                                 key={result.id} 
-                                href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
+                                href={null} 
                                 className="search-result-items"
                                 onClick={this.artistSelected.bind(this,result)}
                             >

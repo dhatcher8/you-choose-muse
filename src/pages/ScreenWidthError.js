@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import logoBig from '../images/logo-big.png';
 import logoWithTextBig from '../images/logo-with-text-big.png';
 import Footer from "../components/Footer/Footer";
 

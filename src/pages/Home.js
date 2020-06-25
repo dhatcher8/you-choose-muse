@@ -20,7 +20,6 @@ export default class Home extends Component {
     
     constructor(){
         super();
-        console.log(spotifyWebApi);
         this.state = {
           playlistName: '',
           redirect : null,
@@ -68,14 +67,6 @@ export default class Home extends Component {
                     <div className="background-div-navy">
                         <Header/>
                         <div>
-                        {/* <div className="general-div">
-                            <button onClick={() => this.goToRecentlyPlayed()}> See Recently Played</button>
-                            <button onClick={() => this.goToTopTracks()}> See Your Top Tracks</button>
-                            <button onClick={() => this.goToTopArtists()}> See Your Top Artists</button>
-                        </div>
-                        <div className="general-div">
-                            
-                        </div> */}
                         <h3 className="title-text-with-select text-color-pink">Build Your Playlist!</h3>
                         <div className="general-builder-element-div">
                             <div className="builder-elements-right-align">

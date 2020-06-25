@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
 
 import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 
@@ -15,15 +14,6 @@ export default class TopArtistsComponent extends Component {
             topAllTimeList : null,
             topSixMonthsList : null,
             topThisMonthList : null,
-            // allTimeActive : true,
-            // sixMonthsActive : false,
-            // thisMonthActive : false,
-            // arr: [
-            //     { name: "Top All Time", isActive: false, value: 0 },
-            //     { name: "Top Six Months", isActive: false, value: 1 },
-            //     { name: "Top This Month", isActive: true, value: 2 }
-            // ],
-            // activeIndex : 2
             arr: [
                 {isActive: false},
                 {isActive: false},
@@ -37,17 +27,12 @@ export default class TopArtistsComponent extends Component {
     }
     
     getArtistsAllTime() {
-        // console.log(spotifyWebApi.getAccessToken());
         spotifyWebApi.getMyTopArtists({
             limit : 50,
             time_range : "long_term"
         }).then(
             function(data) {
-                // newTrackPlaylist = data;
-                // this.recentlyPlayedList = data;
                 this.setState({ topAllTimeList : data.items})
-                console.log(data.items);
-                // console.log(this.recentlyPlayedList.items);
             }.bind(this),
             function (err) {
                 console.error(err);
@@ -57,17 +42,12 @@ export default class TopArtistsComponent extends Component {
     }
 
     getArtistsSixMonths() {
-        // console.log(spotifyWebApi.getAccessToken());
         spotifyWebApi.getMyTopArtists({
             limit : 50,
             time_range : "medium_term"
         }).then(
             function(data) {
-                // newTrackPlaylist = data;
-                // this.recentlyPlayedList = data;
                 this.setState({ topSixMonthsList : data.items})
-                // console.log(data.items);
-                // console.log(this.recentlyPlayedList.items);
             }.bind(this),
             function (err) {
                 console.error(err);
@@ -77,17 +57,12 @@ export default class TopArtistsComponent extends Component {
     }
 
     getArtistsThisMonth() {
-        // console.log(spotifyWebApi.getAccessToken());
         spotifyWebApi.getMyTopArtists({
             limit : 50,
             time_range : "short_term"
         }).then(
             function(data) {
-                // newTrackPlaylist = data;
-                // this.recentlyPlayedList = data;
                 this.setState({ topThisMonthList : data.items})
-                // console.log(data.items);
-                // console.log(this.recentlyPlayedList.items);
             }.bind(this),
             function (err) {
                 console.error(err);
@@ -139,12 +114,10 @@ export default class TopArtistsComponent extends Component {
                     topAllTime[i].images[0].url = topAllTime[i].images[0].url;
                 }
                 catch {
-                    console.log(i);
                     if (topAllTime[i].name == "") {
                         topAllTime.splice(i, 1);
                     } else {
                         if (topAllTime[i].images.length < 1 || topAllTime[i].images == undefined) {
-                            console.log("true");
                             topAllTime[i].images[0] = { url: ''};
                         } else {
                             topAllTime[i].images[0].url = { url: ''};
@@ -160,14 +133,11 @@ export default class TopArtistsComponent extends Component {
                                 return (
                                     <a 
                                         key={result.id} 
-                                        href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
+                                        href={null}
                                         className="playlist-individual-items"
-                                        // onClick={this.artistSelected.bind(this,result)}
                                     >
                                         <h6 className="playlist-item-number">{index+1}</h6>
-                                        {/* </a><div className="image-wrapper"> */}
                                         <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
-                                        {/* </div>  */}
                                         <div className="playlist-item-text">
                                             <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
@@ -193,12 +163,10 @@ export default class TopArtistsComponent extends Component {
                     topSixMonths[i].images[0].url = topSixMonths[i].images[0].url;
                 }
                 catch {
-                    console.log(i);
                     if (topSixMonths[i].name == "") {
                         topSixMonths.splice(i, 1);
                     } else {
                         if (topSixMonths[i].images.length < 1 || topSixMonths[i].images == undefined) {
-                            console.log("true");
                             topSixMonths[i].images[0] = { url: ''};
                         } else {
                             topSixMonths[i].images[0].url = { url: ''};
@@ -214,14 +182,11 @@ export default class TopArtistsComponent extends Component {
                                 return (
                                     <a 
                                         key={result.id} 
-                                        href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
+                                        href={null}
                                         className="playlist-individual-items"
-                                        // onClick={this.artistSelected.bind(this,result)}
                                     >
                                         <h6 className="playlist-item-number">{index+1}</h6>
-                                        {/* </a><div className="image-wrapper"> */}
                                         <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
-                                        {/* </div>  */}
                                         <div className="playlist-item-text">
                                             <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
@@ -242,18 +207,15 @@ export default class TopArtistsComponent extends Component {
     renderThisMonth() {
         if (this.state.arr[2].isActive) {
             var i;
-            console.log(topThisMonth);
             for (i = 0; i < topThisMonth.length; i++) {
                 try {
                     topThisMonth[i].images[0].url = topThisMonth[i].images[0].url;
                 }
                 catch {
-                    console.log(i);
                     if (topThisMonth[i].name == "") {
                         topThisMonth.splice(i, 1);
                     } else {
                         if (topThisMonth[i].images.length < 1 || topThisMonth[i].images == undefined) {
-                            console.log("true");
                             topThisMonth[i].images[0] = { url: ''};
                         } else {
                             topThisMonth[i].images[0].url = { url: ''};
@@ -271,14 +233,11 @@ export default class TopArtistsComponent extends Component {
                                 return (
                                     <a 
                                         key={result.id} 
-                                        href={null} //later this href can add artist also can later fill in the alt under image source as a common image or something
+                                        href={null}
                                         className="playlist-individual-items"
-                                        // onClick={this.artistSelected.bind(this,result)}
                                     >
                                         <h6 className="playlist-item-number">{index+1}</h6>
-                                        {/* </a><div className="image-wrapper"> */}
                                         <img className="playlist-item-image" src={result.images[0].url} alt={result.name}/> 
-                                        {/* </div>  */}
                                         <div className="playlist-item-text">
                                             <h6 className="playlist-item-text-one">{result.name}</h6>
                                         </div>
@@ -298,7 +257,6 @@ export default class TopArtistsComponent extends Component {
 
     render() {
         if (this.state.topAllTimeList == null || this.state.topSixMonthsList == null || this.state.topThisMonthList == null) {
-            // console.log("here1");
             if (this.state.playlistGenerationFailure) {
                 return (
                     <div className="warning-logout-container">
@@ -326,23 +284,6 @@ export default class TopArtistsComponent extends Component {
                 <div className="playlist-header-background-div">
                     <div className="playlist-header-div">
                         <h3 className="title-text-with-select text-color-teal">Top Played Artists</h3>
-                        {/* <Button className="btn-primary" className="playlist-button-position" className="playlist-button" className={
-                            this.state.buttonIsActive ? 'playlist-btn-active' : 'playlist-btn-inactive'} onClick={() => this.onClick()}
-                            >
-                        {this.state.buttonText}
-                        </Button>   */}
-                        {/* {this.state.arr.map((el, index) =>
-                            <>
-                                <Button className="btn-primary" className="playlist-button" className={
-                                el.isActive ? 'playlist-btn-active' : 'playlist-btn-inactive'
-                                } key={index} onClick={() => this.onClick(index)}>
-                                    <div key={index} onClick={() => this.onClick(index)}>
-                                    {el.name}
-                                    </div>
-                                </Button>
-                                <>&nbsp;</>
-                            </>
-                        )} */}
 
                         <ul className="top-select-ul">
                             <li className="top-select-links"><a className={this.state.arr[2].isActive ? 'top-select-a-selected' : 'top-select-a'} href="#" onClick={() => this.selectTopThisMonth()}>Past Month</a></li>

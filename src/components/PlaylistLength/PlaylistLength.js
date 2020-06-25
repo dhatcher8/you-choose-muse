@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
-import {spotifyWebApi} from '../../pages/GetTokenRedirect';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PlaylistLength.css'
@@ -32,7 +30,6 @@ export default class PlaylistLength extends Component {
         this.setState({ arr: tmp });
         this.setState({activeIndex: index});
         globalPlaylistLength = this.state.arr[index].value;
-        // console.log(this.state.arr);
         
     }
 

@@ -14,7 +14,6 @@ export default class Welcome extends Component {
           loggedIn: accessToken ? true : false,
         }
         if (accessToken) {
-          // console.log(accessToken);
           spotifyWebApi.setAccessToken(accessToken);
         } else {
             console.log("Error getting token");
@@ -23,10 +22,8 @@ export default class Welcome extends Component {
 
     getHashParams() {
           var curr_hash = window.location.hash;
-        //   console.log(curr_hash);
           var parts = curr_hash.split('=');
           var accessToken = parts[1];
-        //   console.log(accessToken);
           return accessToken;
 
         }

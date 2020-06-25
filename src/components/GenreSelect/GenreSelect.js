@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
 import './GenreSelect.css';
 
 import {spotifyWebApi} from '../../pages/GetTokenRedirect'
@@ -33,8 +32,6 @@ export default class GenreSelect extends Component {
             function (data) {
                 prev = null;
                 this.setState({genreList: data.genres});
-                // console.log(data.genres)
-                // console.log(this.state.genreList);
                 this.createGenreObject();
             }.bind(this),
             function (err) {
@@ -47,12 +44,10 @@ export default class GenreSelect extends Component {
     createGenreObject() {
         var i;
         var genreValuePairsList = []
-        // console.log(this.state.genreList);
         for (i = 0; i < this.state.genreList.length; i++) {
             var dict = { value: this.state.genreList[i], label: this.state.genreList[i]};
             genreValuePairsList.push(dict);
         }
-        // console.log(genreValuePairsList);
         this.setState({genresAndValues: genreValuePairsList});
     }
 
@@ -110,13 +105,10 @@ export default class GenreSelect extends Component {
                 }
             }
         }
-
-        // console.log(this.state.genresAndValues)
-        // console.log(this.state.selectedGenres);
         return (
 
             <div>
-                <div className="general-builder-element-div">
+                <div className="genre-builder-element-div">
                     <div className="builder-elements-right-align">
                         <h3 className="sub-title-text-home"> Genres: &nbsp;</h3>
                     </div>

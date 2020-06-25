@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
-import logo from '../../images/spotifylogo.jpg'
-import {Link} from 'react-router-dom'
-import { FaAlignRight } from "react-icons/fa"
 import './Header.css';
 import logoBig from '../../images/logo-big.png'
 

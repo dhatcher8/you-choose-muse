@@ -4,9 +4,6 @@ import logoBig from '../images/logo-big.png';
 import logoWithTextBig from '../images/logo-with-text-big.png';
 import Footer from "../components/Footer/Footer";
 
-// import Spotify from 'spotify-web-api-js';
-
-// const spotifyWebApi = new Spotify();
 
 export default class Welcome extends Component {
     
@@ -18,7 +15,6 @@ export default class Welcome extends Component {
         );
         
       }
-      console.log(window.innerWidth);
         return (
           <div className="background-div-navy">
             <div>
