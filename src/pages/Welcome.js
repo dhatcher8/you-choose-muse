@@ -33,7 +33,7 @@ export default class Welcome extends Component {
                 Build a playlist <span class="text-color-teal">inspired</span> by your <span class="text-color-pink">desires</span>.
               </div>
               <div className="medium-padding-div">
-                <a href='http://localhost:8888/login'>
+                <a href='/login'>
                   <button className="button-big button-teal">Login with Spotify.</button>
                 </a>
               </div>
