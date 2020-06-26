@@ -15,6 +15,13 @@ export default class Welcome extends Component {
         );
         
       }
+
+      var redirect_link = 'http://localhost:8888/login';
+      console.log(process.env.NODE_ENV);
+      if (process.env.NODE_ENV === 'production') {
+        redirect_link = window.location.origin + '/callback';
+      }
+
         return (
           <div className="background-div-navy">
             <div>
@@ -33,7 +40,7 @@ export default class Welcome extends Component {
                 Build a playlist <span class="text-color-teal">inspired</span> by your <span class="text-color-pink">desires</span>.
               </div>
               <div className="medium-padding-div">
-                <a href='/login'>
+                <a href={redirect_link}>
                   <button className="button-big button-teal">Login with Spotify.</button>
                 </a>
               </div>

@@ -10,7 +10,7 @@ let querystring = require('querystring');
 
 var client_id = process.env.REACT_APP_CLIENT_ID; // Your client id
 var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
-var redirect_uri = `${window.location.origin}/callback`; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 let app = express()
 const dev = app.get('env') !== 'production';
@@ -19,7 +19,7 @@ if (!dev) {
   app.disable('x-powered-by');
   app.use(compression());
   app.use(morgan('common'));
-  console.log(path);
+  console.log(path)
   app.use(express.static(path.resolve('../', 'build')));
   app.get('/login', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
