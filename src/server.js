@@ -10,7 +10,7 @@ let querystring = require('querystring');
 
 var client_id = process.env.REACT_APP_CLIENT_ID; // Your client id
 var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
-var redirect_uri = '/callback'; // Your redirect uri
+// var redirect_uri = 'https://you-choose-muse.herokuapp.com/callback'; // Your redirect uri
 
 console.log(client_id, client_secret);
 console.log(process.env.REACT_APP_CLIENT_ID, process.env.REACT_APP_CLIENT_SECRET);
@@ -20,6 +20,8 @@ let app = express()
 const dev = app.get('env') !== 'production';
 
 if (!dev) {
+  var redirect_uri = 'https://you-choose-muse.herokuapp.com/callback'; // Your redirect uri
+
   app.disable('x-powered-by');
   app.use(compression());
   app.use(morgan('common'));
@@ -54,7 +56,7 @@ if (!dev) {
     }
     request.post(authOptions, function(error, response, body) {
       var access_token = body.access_token
-      let uri = process.env.FRONTEND_URI || '/token/#'
+      let uri = process.env.FRONTEND_URI || 'https://you-choose-muse.herokuapp.com/token/#'
       res.redirect(uri + 'access_token=' + access_token)
     })
   })
@@ -63,6 +65,41 @@ if (!dev) {
     res.sendFile(path.resolve('../', 'build', 'index.html'));
   })
 
+} else {
+  var redirect_uri = 'http://localhost:8888/callback';
+
+  app.get('/login', function(req, res) {
+    res.redirect('https://accounts.spotify.com/authorize?' +
+      querystring.stringify({
+        response_type: 'code',
+        client_id: client_id,
+        scope: scope,
+        redirect_uri
+      }))
+  })
+  
+  app.get('/callback', function(req, res) {
+    let code = req.query.code || null
+    let authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      form: {
+        code: code,
+        redirect_uri,
+        grant_type: 'authorization_code'
+      },
+      headers: {
+        'Authorization': 'Basic ' + (new Buffer(
+          client_id + ':' + client_secret
+        ).toString('base64'))
+      },
+      json: true
+    }
+    request.post(authOptions, function(error, response, body) {
+      var access_token = body.access_token
+      let uri = process.env.FRONTEND_URI || 'http://localhost:3000/token/#'
+      res.redirect(uri + 'access_token=' + access_token)
+    })
+  })
 }
 
 
@@ -75,38 +112,7 @@ var scope = 'user-read-private user-read-email user-read-playback-state playlist
 //   return res.send('pong');
 //  });
 
-app.get('/login', function(req, res) {
-  res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
-      response_type: 'code',
-      client_id: client_id,
-      scope: scope,
-      redirect_uri
-    }))
-})
 
-app.get('/callback', function(req, res) {
-  let code = req.query.code || null
-  let authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    form: {
-      code: code,
-      redirect_uri,
-      grant_type: 'authorization_code'
-    },
-    headers: {
-      'Authorization': 'Basic ' + (new Buffer(
-        client_id + ':' + client_secret
-      ).toString('base64'))
-    },
-    json: true
-  }
-  request.post(authOptions, function(error, response, body) {
-    var access_token = body.access_token
-    let uri = process.env.FRONTEND_URI || 'http://localhost:3000/token/#'
-    res.redirect(uri + 'access_token=' + access_token)
-  })
-})
 
 const server = createServer(app);
 
