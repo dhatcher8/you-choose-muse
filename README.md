@@ -6,7 +6,7 @@
 
 You Choose, Muse crafts playlist recommendations from a combination of your choice of artists, tracks, and genres. See your top tracks and artists as well as your recently played tracks for inspiration.
 
-##### Try out [You Choose, Muse](https://you-choose-muse.herokuapp.com/) now!
+### Try out [You Choose, Muse](https://you-choose-muse.herokuapp.com/) now!
 
 ## Spotify API
 
