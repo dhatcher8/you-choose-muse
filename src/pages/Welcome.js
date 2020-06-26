@@ -19,7 +19,7 @@ export default class Welcome extends Component {
       var redirect_link = 'http://localhost:8888/login';
       console.log(process.env.NODE_ENV);
       if (process.env.NODE_ENV === 'production') {
-        redirect_link = window.location.origin + '/callback';
+        redirect_link = window.location.origin + '/login';
       }
 
         return (

@@ -21,6 +21,7 @@ if (!dev) {
   app.use(morgan('common'));
   console.log(path)
   app.use(express.static(path.resolve('../', 'build')));
+  
   app.get('/login', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
       querystring.stringify({
