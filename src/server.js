@@ -13,8 +13,8 @@ let app = express()
 
 var scope = 'user-read-private user-read-email user-read-playback-state playlist-modify-public user-read-recently-played user-top-read';
 
-app.use(express.static('./src'));
-app.use(express.static(path.join('./src', 'build')));
+app.use(express.static('../'));
+app.use(express.static(path.join('../', 'build')));
 app.get('/ping', function (req, res) {
   return res.send('pong');
  });
