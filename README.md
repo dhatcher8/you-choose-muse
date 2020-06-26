@@ -6,6 +6,7 @@
 
 You Choose, Muse crafts playlist recommendations from a combination of your choice of artists, tracks, and genres. See your top tracks and artists as well as your recently played tracks for inspiration.
 
+##### Try out [You Choose, Muse](https://you-choose-muse.herokuapp.com/) now!
 
 ## Spotify API
 
@@ -26,7 +27,7 @@ This application uses Spotify Web API to allow users to see different aspects of
 
 Go to [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/), log in and create a new App.
 
-Add `localhost:3000/callback` as _Redirect URI_ in your Spotify App Settings.
+Add `http://localhost:8888/callback` as _Redirect URI_ in your Spotify App Settings.
 
 Grab the _Client Id_ and _Client Secret_ that will be added to env.js.
 
@@ -34,9 +35,10 @@ Grab the _Client Id_ and _Client Secret_ that will be added to env.js.
 
 Application is based on [create-react-app](https://github.com/facebook/create-react-app)
 
-To get the app up and running, from the root directory: 
+To get the app up and running: 
 
-- Run `npm install`
-- Create a `.env` file in the `src` directory and add in your `REACT_APP_CLIENT_ID` and `REACT_APP_CLIENT_SECRET` from your Spotify app
-- To start up the server run: `node src/server.js`
-- To start up the client, run: `npm start`
+- Clone the repository
+- From the root directory, run `npm install`
+- Create a `.env` file in the `src` directory and add in your `REACT_APP_CLIENT_ID` and `REACT_APP_CLIENT_SECRET` from your newly created Spotify app
+- To start up the server and client run: `npm start`
+- You're good to go!
