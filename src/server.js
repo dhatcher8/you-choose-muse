@@ -10,7 +10,7 @@ let querystring = require('querystring');
 
 var client_id = process.env.REACT_APP_CLIENT_ID; // Your client id
 var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = '/callback'; // Your redirect uri
 
 console.log(client_id, client_secret);
 console.log(process.env.REACT_APP_CLIENT_ID, process.env.REACT_APP_CLIENT_SECRET);
@@ -54,7 +54,7 @@ if (!dev) {
     }
     request.post(authOptions, function(error, response, body) {
       var access_token = body.access_token
-      let uri = process.env.FRONTEND_URI || 'http://localhost:8888/token/#'
+      let uri = process.env.FRONTEND_URI || '/token/#'
       res.redirect(uri + 'access_token=' + access_token)
     })
   })
