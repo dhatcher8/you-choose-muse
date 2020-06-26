@@ -1,7 +1,9 @@
 require('dotenv').config();
-let express = require('express')
-let request = require('request')
-let querystring = require('querystring')
+let express = require('express');
+const path = require('path');
+let port = process.env.PORT || 8888
+let request = require('request');
+let querystring = require('querystring');
 
 var client_id = process.env.REACT_APP_CLIENT_ID; // Your client id
 var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
@@ -11,6 +13,11 @@ let app = express()
 
 var scope = 'user-read-private user-read-email user-read-playback-state playlist-modify-public user-read-recently-played user-top-read';
 
+app.use(express.static('./src'));
+app.use(express.static(path.join('./src', 'build')));
+app.get('/ping', function (req, res) {
+  return res.send('pong');
+ });
 
 app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
@@ -45,6 +52,6 @@ app.get('/callback', function(req, res) {
   })
 })
 
-let port = process.env.PORT || 8888
+
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`)
 app.listen(port)
