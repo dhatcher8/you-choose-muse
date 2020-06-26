@@ -12,6 +12,10 @@ var client_id = process.env.REACT_APP_CLIENT_ID; // Your client id
 var client_secret = process.env.REACT_APP_CLIENT_SECRET; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
+console.log(client_id, client_secret);
+console.log(process.env.REACT_APP_CLIENT_ID, process.env.REACT_APP_CLIENT_SECRET);
+console.log(process.env);
+
 let app = express()
 const dev = app.get('env') !== 'production';
 
