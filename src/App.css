@@ -106,6 +106,10 @@
   padding: 15px;
 }
 
+.large-padding-div {
+  padding: 45px;
+}
+
 .margins-in-rounded-div {
   margin: 12px
 }

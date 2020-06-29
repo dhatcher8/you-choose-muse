@@ -354,7 +354,12 @@ export default class TopTracksComponent extends Component {
                 return (
                     <div className="warning-logout-container">
                         <div className="warning-sub-container">
-                            Uh oh, you've been logged out! Go back to the home screen and login!
+                            Uh oh, you've been logged out! Go back to the welcome screen and login!
+                        </div>
+                        <div className="large-padding-div">
+                            <a href="/">
+                                <button className="button-big button-teal">Go To Welcome.</button>
+                            </a>
                         </div>
                     </div>
                 );
