@@ -151,7 +151,6 @@ export default class RecentlyPlayedComponent extends Component {
                                         <div className="playlist-item-text-one">{result.track.name}</div>
                                         <div className="playlist-item-text-two">{result.track.artists[0].name}</div>
                                     </div>
-                                    
                                 </a>
                             );
                         })}

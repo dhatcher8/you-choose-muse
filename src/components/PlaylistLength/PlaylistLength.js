@@ -39,7 +39,7 @@ export default class PlaylistLength extends Component {
         return (
             <div className="general-builder-element-div">
                 <div className="builder-elements-right-align">
-                    <h3 className="sub-title-text-home">Playlist Length: &nbsp;</h3>
+                    <h3 className="sub-title-text-home">Number of Tracks: &nbsp;</h3>
                 </div>
                 <div className="builder-elements-left-align">
                     {this.state.arr.map((el, index) =>
