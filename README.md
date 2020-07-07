@@ -33,8 +33,6 @@ Grab the _Client Id_ and _Client Secret_ that will be added to env.js.
 
 ## Development
 
-Application is based on [create-react-app](https://github.com/facebook/create-react-app)
-
 To get the app up and running: 
 
 - Clone the repository
